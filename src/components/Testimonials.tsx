@@ -32,7 +32,7 @@ export default function Testimonials() {
   const t = items[i];
 
   return (
-    <section id="testimonials" className="py-14">
+    <section id="testimonials" className="py-10">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-14 lg:grid-cols-2">
 

@@ -9,7 +9,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-14">
+    <section id="contact" className="py-10">
       <div className="mx-auto max-w-7xl px-6">
         <div className="overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#3B2940] to-[#2F2035] shadow-2xl shadow-[#3B2940]/20 lg:grid lg:grid-cols-5">
 
@@ -34,34 +34,34 @@ export default function Contact() {
                 <span>
                   Conceive IVF Fertility Centre,
                   <br />
-                  Main Road, Hyderabad, Telangana 500001
+                  Opp Town Park, Dabwali Road Sirsa
                 </span>
               </li>
 
               <li className="flex gap-4">
                 <span className="text-xl">📞</span>
                 <a
-                  href="tel:+919999999999"
+                  href="tel:+919255278000"
                   className="transition hover:text-[#E0C98A] hover:underline"
                 >
-                  +91 99999 99999
+                  +91 9255278000
                 </a>
               </li>
 
               <li className="flex gap-4">
                 <span className="text-xl">✉️</span>
                 <a
-                  href="mailto:care@conceiveivf.in"
+                  href="mailto:conceiveivfsirsa@gmail.com"
                   className="transition hover:text-[#E0C98A] hover:underline"
                 >
-                  care@conceiveivf.in
+                  conceiveivfsirsa@gmail.com
                 </a>
               </li>
 
               <li className="flex gap-4">
                 <span className="text-xl">🕘</span>
                 <span>
-                  Mon – Sat: 9:00 AM – 7:00 PM
+                  Mon – Sun: 10:00 AM – 6:00 PM
                 </span>
               </li>
             </ul>

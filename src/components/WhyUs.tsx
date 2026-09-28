@@ -25,7 +25,7 @@ export default function WhyUs() {
         relative
         overflow-hidden
         bg-[#3B2940]
-        py-14
+        py-10
         text-white
       "
     >

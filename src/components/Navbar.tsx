@@ -103,21 +103,21 @@ const menuItems: MenuItem[] = [
         label: "FAQ",
         href: "/faq",
       },
-      {
-        label: "Average Cost of Treatment",
-        href: "#",
-      },
-      {
-        label: "Menstrual Cycle Calculator",
-        href: "#",
-      },
+      // {
+      //   label: "Average Cost of Treatment",
+      //   href: "#",
+      // },
+      // {
+      //   label: "Menstrual Cycle Calculator",
+      //   href: "#",
+      // },
     ],
   },
 
-  {
-    label: "Gallery",
-    href: "#",
-  },
+  // {
+  //   label: "Gallery",
+  //   href: "#",
+  // },
 
   {
     label: "Contact",

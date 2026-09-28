@@ -15,58 +15,58 @@ export default function ParenthoodJourney() {
     {
       title: "In Vitro Fertilization (IVF)",
       image: img1,
-      link: "#",
+      link: "/in-vitro-fertilization",
     },
     {
       title: "Intra Uterine Insemination (IUI)",
       image: img2,
-      link: "#",
+      link: "/iui-intrauterine-insemination",
     },
     {
       title: "ICSI Treatment",
       image: img3,
         
-      link: "#",
+      link: "/icsi",
     },
     {
       title: "Egg Freezing",
       image:img4,
-      link: "#",
+      link: "/egg-freezing",
     },
     {
       title: "Reproductive Surgery",
       image:img5,
-      link: "#",
+      link: "/reproductive-surgery",
     },
     {
       title: "Semen / Sperm Freezing",
       image:img6,
-      link: "#",
+      link: "/semen-sperm-freezing",
     },
     {
       title: "InFertility Assessment - Male",
       image:img7,
-      link: "#",
+      link: "/infertility-assessment-male",
     },
     {
       title: "InFertility Assessment - Female",
       image:img8,
-      link: "#",
+      link: "/infertility-assesment-female",
     },
     {
       title: "Embryology",
       image:img9,
-      link: "#",
+      link: "/embryology",
     },
     {
       title: "CASA",
       image:img10,
-      link: "#",
+      link: "/casa",
     },
     {
       title: "PGS / PGD",
       image:img11,
-      link: "#",
+      link: "/pgd-pgs",
     },
   ];
 
@@ -79,10 +79,10 @@ export default function ParenthoodJourney() {
 
         .parenthood-journey {
           width: 100%;
-          background: #ffffff;
+          background: #f8f4ee;
 
           /* REDUCED TOP + BOTTOM SPACE */
-          padding: 55px 20px 60px;
+          padding: 40px 20px 40px;
 
           margin: 0;
         }

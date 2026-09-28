@@ -104,16 +104,16 @@ const risks = [
 
 export default function InVitroFertilization() {
   return (
-    <main className="bg-white text-[#183f45]">
+    <main className="bg-white text-[#3B2940]">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#075f68]">
+      <section className="relative overflow-hidden bg-[#3B2940]">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=85"
             alt="IVF fertility care"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#075f68]/85" />
+          <div className="absolute inset-0 bg-[#3B2940]/85" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
@@ -134,16 +134,19 @@ export default function InVitroFertilization() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  to="/contact"
-                  className="rounded-full bg-[#dc3f73] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+                <button
+                  type="button"
+                  onClick={() =>
+                    window.dispatchEvent(new Event("openAppointment"))
+                  }
+                  className="rounded-full bg-[#C6A15B] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
                 >
                   Book Appointment
-                </Link>
+                </button>
 
                 <a
                   href="#ivf-process"
-                  className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#075f68]"
+                  className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#3B2940]"
                 >
                   Explore IVF
                 </a>
@@ -164,7 +167,7 @@ export default function InVitroFertilization() {
       </section>
 
       {/* INTRO */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="overflow-hidden rounded-[28px]">
             <img
@@ -175,15 +178,15 @@ export default function InVitroFertilization() {
           </div>
 
           <div>
-            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Understanding IVF
             </p>
 
-            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               A structured path toward parenthood
             </h2>
 
-            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               <p>
                 In-vitro fertilisation (IVF) is a series of medical procedures
                 used to assist with conception. Mature eggs are retrieved from
@@ -204,29 +207,29 @@ export default function InVitroFertilization() {
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl bg-[#fff0f4] p-5">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#dc3f73]">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   IVF
                 </div>
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Assisted reproduction
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-[#f0fafb] p-5">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#08727c]">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   Lab
                 </div>
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Fertilisation & culture
                 </p>
               </div>
 
               <div className="col-span-2 rounded-2xl bg-[#f7f7f7] p-5 sm:col-span-1">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#183f45]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#3B2940]">
                   Care
                 </div>
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Personalised treatment
                 </p>
               </div>
@@ -236,18 +239,18 @@ export default function InVitroFertilization() {
       </section>
 
       {/* WHAT IS IVF */}
-      <section className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               What Is IVF?
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               From egg retrieval to embryo transfer
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               IVF brings several carefully coordinated stages together. Each
               stage is monitored by the fertility team to support an
               individualised treatment plan.
@@ -271,17 +274,17 @@ export default function InVitroFertilization() {
             ].map((item, index) => (
               <div
                 key={item.title}
-                className="rounded-[24px] border border-[#e8eeee] bg-white p-7 shadow-sm"
+                className="rounded-[24px] border border-[#E8DFD2] bg-white p-7 shadow-sm"
               >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#fff0f4] font-['Playfair_Display'] text-xl font-bold text-[#dc3f73]">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F8F4EE] font-['Playfair_Display'] text-xl font-bold text-[#C6A15B]">
                   0{index + 1}
                 </div>
 
-                <h3 className="font-['Manrope'] text-lg font-bold text-[#183f45]">
+                <h3 className="font-['Manrope'] text-lg font-bold text-[#3B2940]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {item.text}
                 </p>
               </div>
@@ -293,19 +296,19 @@ export default function InVitroFertilization() {
       {/* IVF PROCESS */}
       <section
         id="ivf-process"
-        className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+        className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10"
       >
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               IVF Treatment Process
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Step by step, with careful monitoring
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               The source page describes IVF as a sequence of evaluation,
               stimulation, monitoring, retrieval, fertilisation, embryo
               culture, transfer and pregnancy testing.
@@ -316,23 +319,23 @@ export default function InVitroFertilization() {
             {steps.map((step) => (
               <div
                 key={step.no}
-                className="group rounded-[24px] border border-[#e7eeee] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group rounded-[24px] border border-[#E8DFD2] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <span className="font-['Playfair_Display'] text-3xl font-bold text-[#dc3f73]/30">
+                  <span className="font-['Playfair_Display'] text-3xl font-bold text-[#C6A15B]/30">
                     {step.no}
                   </span>
 
-                  <span className="rounded-full bg-[#f0fafb] px-3 py-1 font-['Manrope'] text-[11px] font-bold uppercase tracking-wider text-[#08727c]">
+                  <span className="rounded-full bg-[#F8F4EE] px-3 py-1 font-['Manrope'] text-[11px] font-bold uppercase tracking-wider text-[#C6A15B]">
                     IVF
                   </span>
                 </div>
 
-                <h3 className="mt-5 font-['Manrope'] text-[17px] font-bold text-[#183f45]">
+                <h3 className="mt-5 font-['Manrope'] text-[17px] font-bold text-[#3B2940]">
                   {step.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {step.text}
                 </p>
               </div>
@@ -342,7 +345,7 @@ export default function InVitroFertilization() {
       </section>
 
       {/* WHO SHOULD CONSIDER */}
-      <section className="bg-[#075f68] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[#3B2940] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[.85fr_1.15fr]">
           <div>
             <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-white/70">
@@ -361,12 +364,15 @@ export default function InVitroFertilization() {
             </p>
 
             <div className="mt-8">
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full bg-[#dc3f73] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="inline-flex rounded-full bg-[#C6A15B] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Talk To Our Specialist
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -376,7 +382,7 @@ export default function InVitroFertilization() {
                 key={item}
                 className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#dc3f73] font-['Manrope'] text-xs font-bold text-white">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#C6A15B] font-['Manrope'] text-xs font-bold text-white">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
@@ -390,14 +396,14 @@ export default function InVitroFertilization() {
       </section>
 
       {/* ADVANTAGES */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Advantages Of IVF
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               What makes IVF a treatment option?
             </h2>
           </div>
@@ -406,17 +412,17 @@ export default function InVitroFertilization() {
             {advantages.map((item) => (
               <div
                 key={item.no}
-                className="rounded-[24px] bg-[#fff8fa] p-7"
+                className="rounded-[24px] bg-[#F8F4EE] p-7"
               >
-                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#dc3f73]/25">
+                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#C6A15B]/25">
                   {item.no}
                 </span>
 
-                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#183f45]">
+                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#3B2940]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {item.text}
                 </p>
               </div>
@@ -426,18 +432,18 @@ export default function InVitroFertilization() {
       </section>
 
       {/* IMAGE + ADVANCED CARE */}
-      <section className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div className="order-2 lg:order-1">
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Personalised Fertility Care
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Every IVF journey needs an individual treatment plan
             </h2>
 
-            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               IVF treatment can vary depending on age, reproductive history,
               ovarian response, sperm parameters and the underlying cause of
               infertility. A fertility specialist evaluates these factors to
@@ -452,11 +458,11 @@ export default function InVitroFertilization() {
                 "Embryo transfer planning",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#08727c] text-white">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#C6A15B] text-white">
                     ✓
                   </span>
 
-                  <span className="font-['Manrope'] text-sm font-semibold text-[#45575a]">
+                  <span className="font-['Manrope'] text-sm font-semibold text-[#5F5660]">
                     {item}
                   </span>
                 </div>
@@ -475,19 +481,19 @@ export default function InVitroFertilization() {
       </section>
 
       {/* RISKS */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
             <div>
-              <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#dc3f73]">
+              <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
                 Risks & Complications
               </p>
 
-              <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+              <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
                 Understanding the possible risks
               </h2>
 
-              <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+              <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
                 IVF is a medical treatment and, like other procedures, can
                 involve risks. The source page highlights ovarian
                 hyperstimulation, multiple pregnancy, procedural complications
@@ -505,19 +511,19 @@ export default function InVitroFertilization() {
               {risks.map((risk, index) => (
                 <div
                   key={risk.title}
-                  className="rounded-[22px] border border-[#e8eeee] bg-white p-6"
+                  className="rounded-[22px] border border-[#E8DFD2] bg-white p-6"
                 >
                   <div className="flex gap-5">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fff0f4] font-['Manrope'] text-sm font-bold text-[#dc3f73]">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F8F4EE] font-['Manrope'] text-sm font-bold text-[#C6A15B]">
                       0{index + 1}
                     </div>
 
                     <div>
-                      <h3 className="font-['Manrope'] text-[17px] font-bold text-[#183f45]">
+                      <h3 className="font-['Manrope'] text-[17px] font-bold text-[#3B2940]">
                         {risk.title}
                       </h3>
 
-                      <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                      <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                         {risk.text}
                       </p>
                     </div>
@@ -530,25 +536,25 @@ export default function InVitroFertilization() {
       </section>
 
       {/* SUCCESS RATE */}
-      <section className="overflow-hidden bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="overflow-hidden bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               IVF Success Rate
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Outcomes depend on individual factors
             </h2>
 
-            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               The source page notes that IVF outcomes can vary according to
               factors such as the woman's age, the cause of infertility and
               clinic-related factors.
             </p>
 
-            <div className="mt-7 rounded-[24px] border border-[#dce9e9] bg-white p-6">
-              <p className="font-['Manrope'] text-sm leading-6 text-[#687477]">
+            <div className="mt-7 rounded-[24px] border border-[#E8DFD2] bg-white p-6">
+              <p className="font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                 The original Conceive IVF page mentions success figures,
                 including a clinic-specific figure and an age-related figure.
                 These are source-stated claims and should not be interpreted as
@@ -556,7 +562,7 @@ export default function InVitroFertilization() {
               </p>
             </div>
 
-            <p className="mt-5 font-['Manrope'] text-sm leading-6 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
               Your fertility specialist can discuss your individual
               circumstances, treatment options and expected outcomes after
               assessment.
@@ -571,10 +577,10 @@ export default function InVitroFertilization() {
             />
 
             <div className="absolute inset-x-5 bottom-5 rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur">
-              <p className="font-['Playfair_Display'] text-xl font-bold text-[#183f45]">
+              <p className="font-['Playfair_Display'] text-xl font-bold text-[#3B2940]">
                 Personalised care matters
               </p>
-              <p className="mt-1 font-['Manrope'] text-sm leading-6 text-[#687477]">
+              <p className="mt-1 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                 Discuss your fertility history and treatment options with a
                 qualified specialist.
               </p>
@@ -584,10 +590,10 @@ export default function InVitroFertilization() {
       </section>
 
       {/* CTA */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#075f68] px-6 py-14 text-center sm:px-12">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#3B2940] px-6 py-14 text-center sm:px-12">
           <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/5" />
-          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#dc3f73]/20" />
+          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#C6A15B]/20" />
 
           <div className="relative mx-auto max-w-3xl">
             <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-white/70">
@@ -604,12 +610,15 @@ export default function InVitroFertilization() {
             </p>
 
             <div className="mt-8">
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full bg-[#dc3f73] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="inline-flex rounded-full bg-[#C6A15B] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Book Your Consultation
-              </Link>
+              </button>
             </div>
           </div>
         </div>

@@ -62,7 +62,7 @@ export default function About() {
 
       <section
         id="about"
-        className="py-14 about-font-body"
+        className="py-10 about-font-body"
       >
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
 

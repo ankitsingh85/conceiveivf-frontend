@@ -265,7 +265,7 @@ Message: ${formData.message}
       {/* =====================================================
           CONTACT INFO
       ===================================================== */}
-      <section className="py-20 lg:py-14 bg-white">
+      <section className="py-20 lg:py-10 bg-white">
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
 
@@ -288,14 +288,11 @@ Message: ${formData.message}
           </div>
 
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mt-14">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-4 mt-10">
 
             {/* Phone */}
-            <a
-              href="tel:01666226880"
-              className="group rounded-[18px] border border-[#E8DFD2] bg-white p-8 shadow-[0_15px_50px_rgba(59,41,64,0.06)] hover:-translate-y-1 transition-all duration-300"
-            >
-
+           
+             <div className="rounded-[28px] border border-[#E8DFD2] bg-white p-8 shadow-[0_15px_50px_rgba(59,41,64,0.06)]">
               <div className="w-14 h-14 rounded-2xl bg-[#3B2940] flex items-center justify-center text-white">
 
                 <svg
@@ -314,24 +311,31 @@ Message: ${formData.message}
               <p className="mt-6 text-sm text-[#C6A15B] font-semibold font-['Manrope']">
                 Phone
               </p>
-
-              <h3 className="mt-2 text-xl font-bold text-[#3B2940] font-['Manrope']">
+            <a href="tel:9255278000" >
+              {/* <h3 className="mt-2 text-xl font-bold text-[#3B2940] font-['Manrope']">
                 01666-226880
+              </h3> */}
+              <h3 className="mt-2 text-xl font-bold text-[#3B2940] font-['Manrope']">
+                +91 9255278000
               </h3>
+              
 
-              <p className="mt-1 text-[#5F5660] font-['Manrope']">
+              {/* <p className="mt-1 text-[#5F5660] font-['Manrope']">
                 9255278000
-              </p>
+              </p> */}
 
             </a>
+            <a href="tel:01666-226880" >
+              <h3 className="mt-2 text-xl font-bold text-[#3B2940] font-['Manrope']">
+                + 01666-226880
+              </h3>
 
+            </a>
+            </div>
 
             {/* Email */}
-            <a
-              href="mailto:conceiveivfsirsa@gmail.com"
-              className="group rounded-[28px] border border-[#E8DFD2] bg-white p-8 shadow-[0_15px_50px_rgba(59,41,64,0.06)] hover:-translate-y-1 transition-all duration-300"
-            >
-
+            
+                <div className="rounded-[28px] border border-[#E8DFD2] bg-white p-8 shadow-[0_15px_50px_rgba(59,41,64,0.06)]">
               <div className="w-14 h-14 rounded-2xl bg-[#C6A15B] flex items-center justify-center text-white">
 
                 <svg
@@ -351,13 +355,16 @@ Message: ${formData.message}
               <p className="mt-6 text-sm text-[#C6A15B] font-semibold font-['Manrope']">
                 Email
               </p>
-
+              <a
+              href="mailto:conceiveivfsirsa@gmail.com"
+              
+            >
               <h3 className="mt-2 text-lg sm:text-xl font-bold text-[#3B2940] font-['Manrope'] break-all">
                 conceiveivfsirsa@gmail.com
               </h3>
 
             </a>
-
+</div>
 
             {/* Clinic */}
             <div className="rounded-[28px] border border-[#E8DFD2] bg-white p-8 shadow-[0_15px_50px_rgba(59,41,64,0.06)]">
@@ -379,18 +386,16 @@ Message: ${formData.message}
               </div>
 
               <p className="mt-6 text-sm text-[#C6A15B] font-semibold font-['Manrope']">
-                Clinic
+                Visit Conceive IVF
               </p>
 
               <h3 className="mt-2 text-xl font-bold text-[#3B2940] font-['Manrope']">
-                Visit Conceive IVF
+                Opp Town Park, Dabwali Road, Sirsa.
               </h3>
 
-              <p className="mt-2 text-[#5F5660] leading-7 font-['Manrope']">
-                Opp Town Park, Dabwali Road,
-                <br />
-                Sirsa
-              </p>
+              {/* <p className="mt-2 text-[#5F5660] leading-7 font-['Manrope']">
+                Opp Town Park, Dabwali Road, Sirsa.
+              </p> */}
 
             </div>
 
@@ -404,7 +409,7 @@ Message: ${formData.message}
       {/* =====================================================
           HOURS
       ===================================================== */}
-      <section className="py-16 bg-[#F8F4EE]">
+      <section className="py-10 bg-[#F8F4EE]">
 
         <div className="max-w-5xl mx-auto px-5 sm:px-8">
 
@@ -455,7 +460,7 @@ Message: ${formData.message}
       ===================================================== */}
       <section
         id="contact-form"
-        className="py-20 lg:py-14 bg-white"
+        className="py-20 lg:py-10 bg-white"
       >
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
@@ -789,9 +794,9 @@ Message: ${formData.message}
       {/* =====================================================
           FAQ
       ===================================================== */}
-      <section className="py-14 lg:py-14 bg-[#F8F4EE]">
+      <section className="py-14 lg:py-10 bg-[#F8F4EE]">
 
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
           <div className="text-center max-w-3xl mx-auto">
 
@@ -970,7 +975,7 @@ Message: ${formData.message}
       {/* =====================================================
           FINAL CTA
       ===================================================== */}
-      <section className="px-5 sm:px-8 lg:px-10 pt-14 pb-14 lg:pb-14">
+      <section className="px-5 sm:px-8 lg:px-10 pt-10 lg:pb-10">
 
         <div className="max-w-7xl mx-auto">
 

@@ -11,9 +11,7 @@ export default function About() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
-        .about-font-display {
-          font-family: "Playfair Display", Georgia, serif;
-        }
+       
 
         .about-font-body {
           font-family: "Manrope", Arial, sans-serif;
@@ -58,7 +56,7 @@ export default function About() {
 
       <section
         id="about"
-        className="py-14 about-font-body"
+        className="py-10 about-font-body"
       >
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
 

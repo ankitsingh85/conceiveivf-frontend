@@ -7,7 +7,7 @@ export default function Footer() {
         .footer-section {
           width: 100%;
           background: #3B2940;
-          padding: 55px 20px 25px;
+          padding: 40px 20px 20px;
           color: #3B2940;
         }
 
@@ -378,7 +378,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <a href="/fertilinity-assesment-female">
+                <a href="/infertility-assesment-female">
                   InFertility Assesment-Female
                 </a>
               </li>
@@ -465,7 +465,13 @@ export default function Footer() {
                   href="tel:01666226880"
                   className="footer-contact-text"
                 >
-                  01666-226880 , 9255278000
+                  01666-226880
+                </a>
+                <a
+                  href="tel:9255278000"
+                  className="footer-contact-text"
+                >
+                  +91 9255278000
                 </a>
 
               </div>
@@ -518,16 +524,16 @@ export default function Footer() {
 
           <p className="footer-copyright">
             © {new Date().getFullYear()} Conceive IVF Fertility Centre.
-            All rights reserved.
+            All rights reserved. Developed by <b><a href="https://lybtechnology.com/">LYB Technology</a></b>
           </p>
 
           <div className="footer-bottom-links">
 
-            <a href="/privacy-policy">
+            <a href="#">
               Privacy Policy
             </a>
 
-            <a href="/terms-and-conditions">
+            <a href="#">
               Terms of Service
             </a>
 

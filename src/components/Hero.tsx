@@ -874,10 +874,10 @@ export default function Hero() {
               </div>
 
               <div className="conceive-stat">
-                <strong>7 days</strong>
+                <strong>Mon - Sun</strong>
 
                 <span>
-                  10:00 – 18:00
+                  10:00 AM – 6:00 PM
                 </span>
               </div>
 

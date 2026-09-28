@@ -431,12 +431,12 @@ export default function FAQ() {
   };
 
   return (
-    <main className="bg-white text-[#183f45]">
+    <main className="bg-white text-[#3B2940]">
 
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#075f68]">
+      <section className="relative overflow-hidden bg-[#3B2940]">
 
         <div className="absolute inset-0">
           <img
@@ -445,10 +445,10 @@ export default function FAQ() {
             className="h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-[#075f68]/90" />
+          <div className="absolute inset-0 bg-[#3B2940]/90" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
 
           <div className="max-w-3xl">
 
@@ -468,16 +468,19 @@ export default function FAQ() {
 
             <div className="mt-8 flex flex-wrap gap-4">
 
-              <Link
-                to="/contact"
-                className="rounded-full bg-[#dc3f73] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="rounded-full bg-[#C6A15B] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Book Appointment
-              </Link>
+              </button>
 
               <a
                 href="#faq-section"
-                className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#075f68]"
+                className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#3B2940]"
               >
                 Explore FAQs
               </a>
@@ -492,7 +495,7 @@ export default function FAQ() {
       {/* =========================================================
           INTRO
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
@@ -508,15 +511,15 @@ export default function FAQ() {
 
           <div>
 
-            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               FAQs
             </p>
 
-            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               We are here to answer your questions
             </h2>
 
-            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
 
               <p>
                 We are here to help you through every hurdle you face. We have
@@ -540,32 +543,32 @@ export default function FAQ() {
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
 
-              <div className="rounded-2xl bg-[#fff0f4] p-5">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#dc3f73]">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   IVF
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Treatment
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-[#f0fafb] p-5">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#08727c]">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   ICSI
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Fertilisation
                 </p>
               </div>
 
-              <div className="col-span-2 rounded-2xl bg-[#f7f7f7] p-5 sm:col-span-1">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#183f45]">
+              <div className="col-span-2 rounded-2xl bg-[#F8F4EE] p-5 sm:col-span-1">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#3B2940]">
                   IUI
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Treatment
                 </p>
               </div>
@@ -582,7 +585,7 @@ export default function FAQ() {
       ========================================================= */}
       <section
         id="faq-section"
-        className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+        className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10"
       >
 
         <div className="mx-auto max-w-7xl">
@@ -590,15 +593,15 @@ export default function FAQ() {
           {/* Heading */}
           <div className="mx-auto max-w-3xl text-center">
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Frequently Asked Questions
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[42px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[42px]">
               Find Answers To Your Questions
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Select a category to explore the questions and answers related
               to your fertility treatment.
             </p>
@@ -611,9 +614,9 @@ export default function FAQ() {
             {/* LEFT CATEGORY */}
             <div className="lg:sticky lg:top-24">
 
-              <div className="rounded-[26px] border border-[#e4eded] bg-white p-3 shadow-sm">
+              <div className="rounded-[26px] border border-[#E8DFD2] bg-white p-3 shadow-sm">
 
-                <p className="px-4 pb-3 pt-3 font-['Manrope'] text-xs font-bold uppercase tracking-[0.1em] text-[#08727c]">
+                <p className="px-4 pb-3 pt-3 font-['Manrope'] text-xs font-bold uppercase tracking-[0.1em] text-[#C6A15B]">
                   FAQ Categories
                 </p>
 
@@ -630,8 +633,8 @@ export default function FAQ() {
                         onClick={() => handleCategoryChange(category.id)}
                         className={`flex w-full items-center justify-between rounded-[16px] px-4 py-3.5 text-left transition ${
                           active
-                            ? "bg-[#075f68] text-white"
-                            : "text-[#526366] hover:bg-[#f0fafb] hover:text-[#075f68]"
+                            ? "bg-[#3B2940] text-white"
+                            : "text-[#5F5660] hover:bg-[#F8F4EE] hover:text-[#3B2940]"
                         }`}
                       >
 
@@ -641,7 +644,7 @@ export default function FAQ() {
                             className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-['Manrope'] text-[10px] font-bold ${
                               active
                                 ? "bg-white/15 text-white"
-                                : "bg-[#f0fafb] text-[#08727c]"
+                                : "bg-[#F8F4EE] text-[#C6A15B]"
                             }`}
                           >
                             0{index + 1}
@@ -660,7 +663,7 @@ export default function FAQ() {
                           fill="none"
                           stroke="currentColor"
                           strokeWidth="2"
-                          className={active ? "text-white" : "text-[#9aa7a9]"}
+                          className={active ? "text-white" : "text-[#9A9098]"}
                         >
                           <path d="m9 18 6-6-6-6" />
                         </svg>
@@ -674,7 +677,7 @@ export default function FAQ() {
               </div>
 
               {/* Small contact card */}
-              <div className="mt-5 rounded-[24px] bg-[#075f68] p-6 text-white">
+              <div className="mt-5 rounded-[24px] bg-[#3B2940] p-6 text-white">
 
                 <p className="font-['Manrope'] text-xs font-bold uppercase tracking-[0.1em] text-white/60">
                   Still Have Questions?
@@ -691,7 +694,7 @@ export default function FAQ() {
 
                 <Link
                   to="/contact"
-                  className="mt-5 inline-flex rounded-full bg-[#dc3f73] px-5 py-3 font-['Manrope'] text-xs font-bold text-white transition hover:bg-[#c93666]"
+                  className="mt-5 inline-flex rounded-full bg-[#C6A15B] px-5 py-3 font-['Manrope'] text-xs font-bold text-white transition hover:bg-[#B08B48]"
                 >
                   Contact Us →
                 </Link>
@@ -705,15 +708,15 @@ export default function FAQ() {
 
               <div className="mb-7">
 
-                <p className="font-['Manrope'] text-xs font-bold uppercase tracking-[0.1em] text-[#dc3f73]">
+                <p className="font-['Manrope'] text-xs font-bold uppercase tracking-[0.1em] text-[#C6A15B]">
                   {selectedCategory.shortTitle}
                 </p>
 
-                <h3 className="mt-2 font-['Playfair_Display'] text-[30px] font-bold text-[#183f45]">
+                <h3 className="mt-2 font-['Playfair_Display'] text-[30px] font-bold text-[#3B2940]">
                   {selectedCategory.title}
                 </h3>
 
-                <p className="mt-3 max-w-2xl font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 max-w-2xl font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {selectedCategory.description}
                 </p>
 
@@ -730,8 +733,8 @@ export default function FAQ() {
                       key={item.question}
                       className={`overflow-hidden rounded-[22px] border bg-white transition-all duration-300 ${
                         isOpen
-                          ? "border-[#08727c]/30 shadow-[0_15px_45px_rgba(7,95,104,0.08)]"
-                          : "border-[#e4eded]"
+                          ? "border-[#C6A15B]/30 shadow-[0_15px_45px_rgba(7,95,104,0.08)]"
+                          : "border-[#E8DFD2]"
                       }`}
                     >
 
@@ -748,14 +751,14 @@ export default function FAQ() {
                           <span
                             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-['Manrope'] text-xs font-bold transition ${
                               isOpen
-                                ? "bg-[#dc3f73] text-white"
-                                : "bg-[#f0fafb] text-[#08727c]"
+                                ? "bg-[#C6A15B] text-white"
+                                : "bg-[#F8F4EE] text-[#C6A15B]"
                             }`}
                           >
                             {String(index + 1).padStart(2, "0")}
                           </span>
 
-                          <span className="font-['Manrope'] text-sm font-bold leading-6 text-[#183f45] sm:text-[15px]">
+                          <span className="font-['Manrope'] text-sm font-bold leading-6 text-[#3B2940] sm:text-[15px]">
                             {item.question}
                           </span>
 
@@ -764,8 +767,8 @@ export default function FAQ() {
                         <span
                           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition ${
                             isOpen
-                              ? "rotate-45 bg-[#dc3f73] text-white"
-                              : "bg-[#f3f7f7] text-[#08727c]"
+                              ? "rotate-45 bg-[#C6A15B] text-white"
+                              : "bg-[#F8F4EE] text-[#C6A15B]"
                           }`}
                         >
 
@@ -788,9 +791,9 @@ export default function FAQ() {
 
                         <div className="px-5 pb-6 sm:px-7 sm:pl-[76px]">
 
-                          <div className="h-px bg-[#edf2f2]" />
+                          <div className="h-px bg-[#E8DFD2]" />
 
-                          <div className="pt-5 font-['Manrope'] text-sm leading-7 text-[#687477]">
+                          <div className="pt-5 font-['Manrope'] text-sm leading-7 text-[#5F5660]">
                             {item.answer}
                           </div>
 
@@ -814,21 +817,21 @@ export default function FAQ() {
       {/* =========================================================
           IVF PROCESS
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      {/* <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="mx-auto max-w-3xl text-center">
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               IVF Treatment
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[42px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[42px]">
               Understanding the IVF Journey
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               The IVF process involves several stages, from initial consultation
               and ovarian stimulation to embryo transfer and pregnancy testing.
             </p>
@@ -862,18 +865,18 @@ export default function FAQ() {
 
               <div
                 key={step.no}
-                className="rounded-[24px] border border-[#e7eeee] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(7,95,104,0.08)]"
+                className="rounded-[24px] border border-[#E8DFD2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(7,95,104,0.08)]"
               >
 
-                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#dc3f73]/25">
+                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#C6A15B]/25">
                   {step.no}
                 </span>
 
-                <h3 className="mt-5 font-['Manrope'] text-lg font-bold text-[#183f45]">
+                <h3 className="mt-5 font-['Manrope'] text-lg font-bold text-[#3B2940]">
                   {step.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {step.text}
                 </p>
 
@@ -887,7 +890,7 @@ export default function FAQ() {
 
             <Link
               to="/in-vitro-fertilization/"
-              className="inline-flex rounded-full bg-[#075f68] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#064f57]"
+              className="inline-flex rounded-full bg-[#3B2940] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#2F2035]"
             >
               Explore IVF Treatment →
             </Link>
@@ -895,12 +898,12 @@ export default function FAQ() {
           </div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* =========================================================
           TREATMENT SERVICES
       ========================================================= */}
-      <section className="bg-[#075f68] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      {/* <section className="bg-[#3B2940] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
 
         <div className="mx-auto max-w-7xl">
 
@@ -956,7 +959,7 @@ export default function FAQ() {
                 className="group rounded-[24px] border border-white/10 bg-white/10 p-7 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/15"
               >
 
-                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#dc3f73]">
+                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#C6A15B]">
                   {item.no}
                 </span>
 
@@ -968,7 +971,7 @@ export default function FAQ() {
                   {item.text}
                 </p>
 
-                <span className="mt-5 inline-block font-['Manrope'] text-sm font-bold text-white transition group-hover:text-[#dc3f73]">
+                <span className="mt-5 inline-block font-['Manrope'] text-sm font-bold text-white transition group-hover:text-[#C6A15B]">
                   Explore Treatment →
                 </span>
 
@@ -979,26 +982,26 @@ export default function FAQ() {
           </div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* =========================================================
           STILL HAVE QUESTIONS
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
-        <div className="mx-auto grid max-w-7xl items-center gap-10 rounded-[32px] bg-[#f8fbfb] p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:p-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 rounded-[32px] bg-[#F8F4EE] p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:p-14">
 
           <div>
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Still Have Questions?
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Ask Our Fertility Team
             </h2>
 
-            <p className="mt-4 max-w-2xl font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-4 max-w-2xl font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Every fertility journey is unique. If you cannot find the answer
               you are looking for, speak with the Conceive IVF team for
               personalised guidance.
@@ -1008,7 +1011,7 @@ export default function FAQ() {
 
           <Link
             to="/contact"
-            className="inline-flex w-fit items-center justify-center rounded-full bg-[#dc3f73] px-7 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+            className="inline-flex w-fit items-center justify-center rounded-full bg-[#C6A15B] px-7 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
           >
             Contact Us →
           </Link>
@@ -1019,13 +1022,13 @@ export default function FAQ() {
       {/* =========================================================
           FINAL CTA
       ========================================================= */}
-      <section className="px-5 pb-16 sm:px-8 lg:px-10 lg:pb-24">
+      <section className="px-5 pb-16 sm:px-8 lg:px-10 lg:pb-10">
 
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#075f68] px-6 py-14 text-center sm:px-12">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#3B2940] px-6 py-14 text-center sm:px-12">
 
           <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/5" />
 
-          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#dc3f73]/20" />
+          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#C6A15B]/20" />
 
           <div className="relative mx-auto max-w-3xl">
 
@@ -1044,16 +1047,19 @@ export default function FAQ() {
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
 
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full bg-[#dc3f73] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="inline-flex rounded-full bg-[#C6A15B] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Book Your Consultation
-              </Link>
+              </button>
 
               <Link
-                to="/videos"
-                className="inline-flex rounded-full border border-white/30 bg-white/10 px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#075f68]"
+                to="/patient-review"
+                className="inline-flex rounded-full border border-white/30 bg-white/10 px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#3B2940]"
               >
                 Watch Patient Videos
               </Link>

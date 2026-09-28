@@ -656,7 +656,7 @@ export default function IUI() {
         ========================= */
 
         .iui-cta {
-          padding: 90px 0;
+          padding: 40px 0;
           background: #F8F4EE;
         }
 
@@ -879,12 +879,15 @@ export default function IUI() {
             </p>
 
             <div className="iui-buttons">
-              <Link
-                to="/contact"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
                 className="iui-btn iui-btn-primary"
               >
                 Book Appointment →
-              </Link>
+              </button>
 
               <a
                 href="#what-is-iui"
@@ -1257,13 +1260,16 @@ export default function IUI() {
                 factors may influence outcomes.
               </p>
 
-              <Link
-                to="/contact"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
                 className="iui-btn iui-btn-primary"
                 style={{ marginTop: "26px" }}
               >
                 Discuss Your Options →
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -1289,12 +1295,15 @@ export default function IUI() {
               may be suitable for your fertility needs and treatment goals.
             </p>
 
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event("openAppointment"))
+              }
               className="iui-btn iui-btn-primary"
             >
               Book Your IUI Consultation →
-            </Link>
+            </button>
           </div>
         </div>
       </section>

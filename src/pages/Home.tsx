@@ -8,6 +8,7 @@ import Process from "../components/Process";
 import Doctors from "../components/Doctors";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
+import Blog from "../components/BlogHome";
 import Contact from "../components/Contact";
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
       <Process />
 
       {/* <Doctors /> */}
-
+<Blog />
       <Testimonials />
 
       <FAQ />

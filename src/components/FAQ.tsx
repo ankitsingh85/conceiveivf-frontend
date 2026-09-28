@@ -33,7 +33,7 @@ export default function FAQ() {
 
         .faq-section {
           background: #F8F4EE;
-          padding: 25px 20px;
+          padding: 40px 20px 40px;
           font-family: "Manrope", Arial, sans-serif;
         }
 
