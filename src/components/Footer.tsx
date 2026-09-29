@@ -427,8 +427,8 @@ export default function Footer() {
               </li>
 
               <li>
-                <a href="#">
-                  Average Cost of Treatment
+                <a href="/blog">
+                  Blog
                 </a>
               </li>
 

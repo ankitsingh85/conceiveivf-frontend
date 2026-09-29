@@ -103,6 +103,11 @@ const menuItems: MenuItem[] = [
         label: "FAQ",
         href: "/faq",
       },
+      {
+        label: "Blog",
+        href: "/blog",
+      },
+      
       // {
       //   label: "Average Cost of Treatment",
       //   href: "#",
