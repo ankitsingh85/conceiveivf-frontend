@@ -1,4 +1,4 @@
-import logo from "../images/conceiveivf-logo.webp";
+import logo from "../images/IVF-White-logo.png";
 
 export default function Footer() {
   return (
@@ -23,11 +23,11 @@ export default function Footer() {
         }
 
         .footer-logo {
-          width: 185px;
+          width: 230px;
           height: auto;
           display: block;
           padding: 10px;
-          background-color: white;
+          background-color: transparent;
           border-radius: 8px;
           margin-bottom: 22px;
         }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/conceiveivf-logo.webp";
+import logo from "../images/IVF-logo.png";
 
 type MenuItem = {
   label: string;
@@ -223,7 +223,7 @@ export default function Navbar() {
           bg-white
           px-5
           sm:px-6
-          py-3
+          py-1
         "
       >
         {/* ===================================================
@@ -239,8 +239,8 @@ export default function Navbar() {
             src={logo}
             alt="Conceive IVF Fertility Centre"
             className="
-              h-14
-              sm:h-14
+              h-auto
+              sm:h-18
               w-auto
               object-contain
             "
