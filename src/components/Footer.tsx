@@ -46,7 +46,7 @@ export default function Footer() {
         .footer-social {
           display: flex;
           align-items: center;
-          gap: 21px;
+          gap: 22px;
           margin-top: 35px;
         }
 

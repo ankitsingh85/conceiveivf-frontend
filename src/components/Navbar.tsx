@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/IVF-logo.png";
+import logo from "../images/IVF-Logo.png";
 
 type MenuItem = {
   label: string;
