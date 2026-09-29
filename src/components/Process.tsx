@@ -1,30 +1,19 @@
-const steps = [
-  {
-    title: "Consultation",
-    desc: "Meet our specialist, share your history and get all your questions answered.",
-  },
-  {
-    title: "Evaluation",
-    desc: "Comprehensive diagnostic tests for both partners to understand the root cause.",
-  },
-  {
-    title: "Personalised Plan",
-    desc: "A tailored treatment protocol designed around your body and your goals.",
-  },
-  {
-    title: "Treatment",
-    desc: "Expert care in our advanced lab with continuous monitoring and support.",
-  },
-  {
-    title: "Your Miracle",
-    desc: "Pregnancy confirmation and ongoing guidance as you welcome your little one.",
-  },
-];
+import type { CSSProperties } from "react";
+import { useSiteContent } from "../hooks/useSiteContent";
+import { HOME_PROCESS_KEY, homeProcessDefaults, type HomeProcessContent } from "../content/homeSections";
 
 export default function Process() {
+  const content = useSiteContent(HOME_PROCESS_KEY, homeProcessDefaults);
+  return <ProcessView content={content} />;
+}
+
+// Pure markup — also used by the admin live preview. `content` is null while loading.
+export function ProcessView({ content }: { content: HomeProcessContent | null }) {
+  if (!content) return <section className="py-14" style={{ minHeight: 420 }} />;
+
   return (
     <section className="py-14">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-6 animate-fade-in">
 
         {/* =========================================
             HEADING
@@ -32,17 +21,19 @@ export default function Process() {
 
         <div className="mx-auto max-w-2xl text-center">
 
-          <span
-            className="
-              text-sm
-              font-semibold
-              uppercase
-              tracking-widest
-              text-[#C6A15B]
-            "
-          >
-            Your Journey
-          </span>
+          {content.label && (
+            <span
+              className="
+                text-sm
+                font-semibold
+                uppercase
+                tracking-widest
+                text-[#C6A15B]
+              "
+            >
+              {content.label}
+            </span>
+          )}
 
           <h2
             className="
@@ -54,7 +45,7 @@ export default function Process() {
               sm:text-4xl
             "
           >
-            Five simple steps to parenthood
+            {content.heading}
           </h2>
 
         </div>
@@ -70,35 +61,38 @@ export default function Process() {
             mt-16
             grid
             gap-10
-            md:grid-cols-5
+            md:grid-cols-[repeat(var(--steps),minmax(0,1fr))]
           "
+          style={{ "--steps": content.steps.length } as CSSProperties}
         >
 
           {/* Progress Line */}
 
-          <div
-            className="
-              absolute
-              top-8
-              right-[10%]
-              left-[10%]
-              hidden
-              h-0.5
-              bg-gradient-to-r
-              from-[#E0C98A]
-              via-[#C6A15B]
-              to-[#3B2940]
-              md:block
-            "
-          />
+          {content.steps.length > 1 && (
+            <div
+              className="
+                absolute
+                top-8
+                right-[10%]
+                left-[10%]
+                hidden
+                h-0.5
+                bg-gradient-to-r
+                from-[#E0C98A]
+                via-[#C6A15B]
+                to-[#3B2940]
+                md:block
+              "
+            />
+          )}
 
 
           {/* Step Cards */}
 
-          {steps.map((s, i) => (
+          {content.steps.map((s, i) => (
 
             <div
-              key={s.title}
+              key={i}
               className="
                 relative
                 text-center
@@ -148,16 +142,18 @@ export default function Process() {
 
               {/* Description */}
 
-              <p
-                className="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-[#5F5660]
-                "
-              >
-                {s.desc}
-              </p>
+              {s.description && (
+                <p
+                  className="
+                    mt-2
+                    text-sm
+                    leading-relaxed
+                    text-[#5F5660]
+                  "
+                >
+                  {s.description}
+                </p>
+              )}
 
             </div>
 

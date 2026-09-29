@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -23,7 +23,34 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 
-export default function App() {
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminSignup from "./pages/admin/AdminSignup";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminLeads from "./pages/admin/AdminLeads";
+import AdminSectionsOverview from "./pages/admin/AdminSectionsOverview";
+import BannerEditor from "./pages/admin/home/BannerEditor";
+import AboutEditor from "./pages/admin/home/AboutEditor";
+import TreatmentsEditor from "./pages/admin/home/TreatmentsEditor";
+import WelcomeEditor from "./pages/admin/home/WelcomeEditor";
+import WhyUsEditor from "./pages/admin/home/WhyUsEditor";
+import VideoEditor from "./pages/admin/home/VideoEditor";
+import ProcessEditor from "./pages/admin/home/ProcessEditor";
+import TestimonialsEditor from "./pages/admin/home/TestimonialsEditor";
+import FaqEditor from "./pages/admin/home/FaqEditor";
+import ContactEditor from "./pages/admin/home/ContactEditor";
+import AboutHeroEditor from "./pages/admin/about/HeroEditor";
+import AboutDoctorEditor from "./pages/admin/about/DoctorEditor";
+import AboutQualificationsEditor from "./pages/admin/about/QualificationsEditor";
+import AboutCtaEditor from "./pages/admin/about/CtaEditor";
+import { aboutSections, homeSections } from "./components/admin/adminNav";
+import AdminLayout from "./components/admin/AdminLayout";
+
+function AppContent() {
+  const { pathname } = useLocation();
+  const isAdminRoute = pathname.startsWith("/admin");
+
   const [appointmentOpen, setAppointmentOpen] = useState(false);
 
   /*
@@ -54,13 +81,12 @@ export default function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <div className="min-h-screen">
+    <div className="min-h-screen">
 
         {/* =========================
             COMMON NAVBAR
         ========================== */}
-        <Navbar />
+        {!isAdminRoute && <Navbar />}
 
         {/* =========================
             ROUTES
@@ -152,24 +178,66 @@ export default function App() {
             element={<Contact />}
           />
 
+          {/* =========================
+              ADMIN (JWT protected)
+          ========================== */}
+          <Route
+            path="/admin"
+            element={
+              <AuthProvider>
+                <Outlet />
+              </AuthProvider>
+            }
+          >
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="login" element={<AdminLogin />} />
+            <Route path="signup" element={<AdminSignup />} />
+            <Route element={<ProtectedRoute />}>
+              <Route element={<AdminLayout />}>
+                <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="leads" element={<AdminLeads />} />
+                <Route path="home" element={<AdminSectionsOverview pageName="Home" sections={homeSections} />} />
+                <Route path="home/banner" element={<BannerEditor />} />
+                <Route path="home/about" element={<AboutEditor />} />
+                <Route path="home/treatments" element={<TreatmentsEditor />} />
+                <Route path="home/welcome" element={<WelcomeEditor />} />
+                <Route path="home/why-us" element={<WhyUsEditor />} />
+                <Route path="home/video" element={<VideoEditor />} />
+                <Route path="home/process" element={<ProcessEditor />} />
+                <Route path="home/testimonials" element={<TestimonialsEditor />} />
+                <Route path="home/faq" element={<FaqEditor />} />
+                <Route path="home/contact" element={<ContactEditor />} />
+                <Route path="about" element={<AdminSectionsOverview pageName="About" sections={aboutSections} />} />
+                <Route path="about/hero" element={<AboutHeroEditor />} />
+                <Route path="about/doctor" element={<AboutDoctorEditor />} />
+                <Route path="about/qualifications" element={<AboutQualificationsEditor />} />
+                <Route path="about/cta" element={<AboutCtaEditor />} />
+                <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+              </Route>
+            </Route>
+          </Route>
+
         </Routes>
 
         {/* =========================
             COMMON FOOTER
         ========================== */}
-        <Footer />
+        {!isAdminRoute && <Footer />}
 
         {/* =========================
             BOOK APPOINTMENT POPUP
         ========================== */}
-        <BookAppointmentModal
-          isOpen={appointmentOpen}
-          onClose={() => setAppointmentOpen(false)}
-        />
+        {!isAdminRoute && (
+          <BookAppointmentModal
+            isOpen={appointmentOpen}
+            onClose={() => setAppointmentOpen(false)}
+          />
+        )}
 
         {/* =========================
             WHATSAPP BUTTON
         ========================== */}
+        {!isAdminRoute && (
         <a
           href="https://wa.me/+919255278000"
           target="_blank"
@@ -203,8 +271,16 @@ export default function App() {
             <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.3a8.3 8.3 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z" />
           </svg>
         </a>
+        )}
 
-      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }

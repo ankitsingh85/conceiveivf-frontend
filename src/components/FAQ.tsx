@@ -1,29 +1,14 @@
 import { useState } from "react";
-
-const faqs = [
-  {
-    q: "When should we consider seeing a fertility specialist?",
-    a: "If you're under 35 and have been trying for 12 months, or over 35 and trying for 6 months, it's a good time to consult us. Couples with known conditions such as PCOS, endometriosis or irregular cycles should come earlier.",
-  },
-  {
-    q: "How long does one IVF cycle take?",
-    a: "A typical IVF cycle takes about 4–6 weeks from the start of stimulation to the pregnancy test. Your care coordinator will give you a detailed, personalised timeline.",
-  },
-  {
-    q: "Is IVF painful?",
-    a: "Most patients experience only mild discomfort. Egg retrieval is done under short anaesthesia, and embryo transfer is a quick, painless procedure similar to a pap smear.",
-  },
-  {
-    q: "What are your success rates?",
-    a: "Our take-home baby rate after a single transfer is over 44.83% higher than the average IVF clinic. Individual outcomes depend on age, diagnosis and other factors, which we'll discuss openly with you.",
-  },
-  {
-    q: "Do you offer payment plans?",
-    a: "Yes. We offer transparent, all-inclusive packages along with flexible EMI options so that finances never stand between you and parenthood.",
-  },
-];
+import { useSiteContent } from "../hooks/useSiteContent";
+import { HOME_FAQ_KEY, homeFaqDefaults, type HomeFaqContent } from "../content/homeSections";
 
 export default function FAQ() {
+  const content = useSiteContent(HOME_FAQ_KEY, homeFaqDefaults);
+  return <FaqView content={content} />;
+}
+
+// Pure markup — also used by the admin live preview. `content` is null while loading.
+export function FaqView({ content }: { content: HomeFaqContent | null }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -257,29 +242,36 @@ export default function FAQ() {
         }
       `}</style>
 
-      <section id="faq" className="faq-section">
-        <div className="faq-container">
+      <section
+        id="faq"
+        className="faq-section"
+        style={content ? undefined : { minHeight: 560 }}
+      >
+        {content && (
+        <div className="faq-container animate-fade-in">
 
           {/* HEADING */}
           <div className="faq-heading">
-            <span className="faq-label">
-              FAQ
-            </span>
+            {content.label && (
+              <span className="faq-label">
+                {content.label}
+              </span>
+            )}
 
             <h2>
-              Questions we're often asked
+              {content.heading}
             </h2>
           </div>
 
           {/* FAQ LIST */}
           <div className="faq-list">
 
-            {faqs.map((f, i) => {
+            {content.items.map((f, i) => {
               const isOpen = open === i;
 
               return (
                 <div
-                  key={f.q}
+                  key={i}
                   className="faq-item"
                 >
 
@@ -293,7 +285,7 @@ export default function FAQ() {
                     aria-expanded={isOpen}
                   >
                     <span className="faq-question-text">
-                      {f.q}
+                      {f.question}
                     </span>
 
                     <span
@@ -313,7 +305,7 @@ export default function FAQ() {
                   >
                     <div className="faq-answer-inner">
                       <p className="faq-answer">
-                        {f.a}
+                        {f.answer}
                       </p>
                     </div>
                   </div>
@@ -324,6 +316,7 @@ export default function FAQ() {
 
           </div>
         </div>
+        )}
       </section>
     </>
   );

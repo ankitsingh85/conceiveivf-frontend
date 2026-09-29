@@ -1,13 +1,20 @@
 import doctorImage from "../images/doctor.webp";
-
-const points = [
-  "State-of-the-art embryology lab & facilities",
-  "Personalised, evidence-based treatment plans",
-  "Holistic emotional & physical support",
-  "Transparent pricing with no hidden costs",
-];
+import SmartLink from "./SmartLink";
+import { useSiteContent } from "../hooks/useSiteContent";
+import { resolveMediaUrl } from "../lib/api";
+import { withBold } from "../utils/text";
+import { HOME_ABOUT_KEY, homeAboutDefaults, type HomeAboutContent } from "../content/homeAbout";
 
 export default function About() {
+  const content = useSiteContent(HOME_ABOUT_KEY, homeAboutDefaults);
+  return <AboutView content={content} />;
+}
+
+/*
+ * Pure "About Us" markup — also used by the admin panel for the live preview.
+ * `content` is null while the first load is in flight.
+ */
+export function AboutView({ content }: { content: HomeAboutContent | null }) {
   return (
     <>
       <style>{`
@@ -63,8 +70,10 @@ export default function About() {
       <section
         id="about"
         className="py-14 about-font-body"
+        style={content ? undefined : { minHeight: 600 }}
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
+        {content && (
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 animate-fade-in">
 
           {/* =========================================
               LEFT IMAGE
@@ -73,8 +82,8 @@ export default function About() {
           <div className="relative">
 
             <img
-              src={doctorImage}
-              alt="Advanced fertility lab"
+              src={content.image ? resolveMediaUrl(content.image) : doctorImage}
+              alt={content.imageAlt}
               className="
                 w-full
                 rounded-[2rem]
@@ -85,50 +94,56 @@ export default function About() {
 
             {/* Small Family Image */}
 
-            <img
-              src="https://images.pexels.com/photos/3995921/pexels-photo-3995921.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=400&w=400"
-              alt="Happy family"
-              className="
-                absolute
-                -right-6
-                -bottom-10
-                hidden
-                h-48
-                w-48
-                rounded-3xl
-                border-8
-                border-white
-                object-cover
-                shadow-xl
-                md:block
-              "
-            />
+            {content.smallImage && (
+              <img
+                src={resolveMediaUrl(content.smallImage)}
+                alt={content.smallImageAlt}
+                className="
+                  absolute
+                  -right-6
+                  -bottom-10
+                  hidden
+                  h-48
+                  w-48
+                  rounded-3xl
+                  border-8
+                  border-white
+                  object-cover
+                  shadow-xl
+                  md:block
+                "
+              />
+            )}
 
             {/* Experience Badge */}
 
-            <div
-              className="
-                absolute
-                -top-6
-                -left-6
-                hidden
-                rounded-2xl
-                about-purple-bg
-                px-6
-                py-4
-                text-white
-                shadow-xl
-                md:block
-              "
-            >
-              <p className="about-font-display text-3xl font-bold">
-                15+
-              </p>
+            {content.badgeValue && (
+              <div
+                className="
+                  absolute
+                  -top-6
+                  -left-6
+                  hidden
+                  rounded-2xl
+                  about-purple-bg
+                  px-6
+                  py-4
+                  text-white
+                  shadow-xl
+                  md:block
+                "
+              >
+                <p className="about-font-display text-3xl font-bold">
+                  {content.badgeValue}
+                </p>
 
-              <p className="text-xs opacity-80">
-                Years of trusted care
-              </p>
-            </div>
+                {content.badgeLabel && (
+                  <p className="text-xs opacity-80">
+                    {content.badgeLabel}
+                  </p>
+                )}
+              </div>
+            )}
 
           </div>
 
@@ -141,17 +156,19 @@ export default function About() {
 
             {/* Section Label */}
 
-            <span
-              className="
-                about-gold
-                text-sm
-                font-semibold
-                uppercase
-                tracking-widest
-              "
-            >
-              About Us
-            </span>
+            {content.label && (
+              <span
+                className="
+                  about-gold
+                  text-sm
+                  font-semibold
+                  uppercase
+                  tracking-widest
+                "
+              >
+                {content.label}
+              </span>
+            )}
 
 
             {/* Heading */}
@@ -166,114 +183,58 @@ export default function About() {
                 sm:text-4xl
               "
             >
-              Welcome to Conceive IVF Fertility Centre
+              {content.heading}
             </h2>
 
 
-            {/* Paragraph 1 */}
+            {/* Paragraphs */}
 
-            <p
-              className="
-                mt-6
-                text-base
-                leading-relaxed
-                text-[#5F5660]
-              "
-            >
-              At{" "}
-
-              <strong
-                className="
-                  font-bold
-                  text-[#3B2940]
-                "
+            {content.paragraphs.map((paragraph, i) => (
+              <p
+                key={i}
+                className={`
+                  ${i === 0 ? "mt-6" : "mt-4"}
+                  text-base
+                  leading-relaxed
+                  text-[#5F5660]
+                `}
               >
-                Conceive IVF Fertility Centre
-              </strong>
-
-              , we bring over 15 years of expertise in helping couples on their
-              journey to parenthood. We believe every journey is unique and
-              deserves personalized care.
-            </p>
-
-
-            {/* Paragraph 2 */}
-
-            <p
-              className="
-                mt-4
-                text-base
-                leading-relaxed
-                text-[#5F5660]
-              "
-            >
-              As a trusted leader in fertility treatments, we combine advanced
-              medical technology with compassionate support to help you achieve
-              your dream of having a family.
-            </p>
-
-
-            {/* Paragraph 3 */}
-
-            <p
-              className="
-                mt-4
-                text-base
-                leading-relaxed
-                text-[#5F5660]
-              "
-            >
-              Our expert team specializes in cutting-edge solutions like IVF,
-              ICSI, and IUI, tailored to your specific needs. With a
-              state-of-the-art facility and a patient-first approach, we are
-              dedicated to turning hope into happiness.
-            </p>
-
-
-            {/* Paragraph 4 */}
-
-            <p
-              className="
-                mt-4
-                text-base
-                leading-relaxed
-                text-[#5F5660]
-              "
-            >
-              With over 15 years of experience, Conceive IVF is where care,
-              expertise, and success come together—because your miracle starts
-              here.
-            </p>
+                {withBold(paragraph, "font-bold text-[#3B2940]")}
+              </p>
+            ))}
 
 
             {/* =========================================
                 BUTTON
             ========================================= */}
 
-            <a
-              href="#contact"
-              className="
-                about-gold-bg
-                about-gold-hover
-                mt-10
-                inline-block
-                rounded-full
-                px-8
-                py-3.5
-                text-sm
-                font-semibold
-                text-white
-                shadow-lg
-                shadow-[#C6A15B]/20
-                transition
-              "
-            >
-              Talk to a Specialist
-            </a>
+            {content.button.label && (
+              <SmartLink
+                to={content.button.link || "#contact"}
+                className="
+                  about-gold-bg
+                  about-gold-hover
+                  mt-10
+                  inline-block
+                  rounded-full
+                  px-8
+                  py-3.5
+                  text-sm
+                  font-semibold
+                  text-white
+                  shadow-lg
+                  shadow-[#C6A15B]/20
+                  transition
+                "
+              >
+                {content.button.label}
+              </SmartLink>
+            )}
 
           </div>
 
         </div>
+        )}
       </section>
     </>
   );

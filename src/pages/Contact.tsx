@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { sendLeadInBackground } from "../hooks/useLeadForm";
 
 const contactFAQs = [
   {
@@ -74,10 +75,14 @@ Treatment: ${formData.treatment}
 Message: ${formData.message}
     `.trim();
 
+    // Open WhatsApp straight away (browsers block pop-ups opened later),
+    // then save the enquiry as a lead for the admin panel
     window.open(
       `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
       "_blank"
     );
+
+    sendLeadInBackground({ ...formData, source: "contact-page" });
   };
 
   return (
@@ -577,6 +582,8 @@ Message: ${formData.message}
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      pattern="\+?[0-9\s\-]{10,20}"
+                      title="Please enter a valid phone number"
                       required
                       placeholder="Enter phone number"
                       className="w-full h-14 rounded-2xl border border-[#E8DFD2] bg-white px-5 outline-none focus:border-[#3B2940] transition-all font-['Manrope'] text-sm"

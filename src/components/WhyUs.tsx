@@ -1,23 +1,14 @@
-const reasons = [
-  {
-    title: "State-of-the-Art Facilities",
-    desc: "Our advanced medical equipment and modern labs ensure precise diagnoses and effective treatments for better success rates.",
-  },
-  {
-    title: "Personalized Treatment Plans",
-    desc: "Every fertility journey is unique, and we tailor treatments to meet your specific needs and goals.",
-  },
-  {
-    title: "Expert Team of Fertility Specialists",
-    desc: "Our experienced specialists and embryologists provide expert care and guidance throughout your journey.",
-  },
-  {
-    title: "Holistic Support for Emotional and Physical Well-Being",
-    desc: "We offer counseling and wellness programs to support you emotionally and physically at every step.",
-  },
-];
+import { useSiteContent } from "../hooks/useSiteContent";
+import { withBold } from "../utils/text";
+import { HOME_WHY_US_KEY, homeWhyUsDefaults, type HomeWhyUsContent } from "../content/homeSections";
 
 export default function WhyUs() {
+  const content = useSiteContent(HOME_WHY_US_KEY, homeWhyUsDefaults);
+  return <WhyUsView content={content} />;
+}
+
+// Pure markup — also used by the admin live preview. `content` is null while loading.
+export function WhyUsView({ content }: { content: HomeWhyUsContent | null }) {
   return (
     <section
       id="why-us"
@@ -28,6 +19,7 @@ export default function WhyUs() {
         py-14
         text-white
       "
+      style={content ? undefined : { minHeight: 560 }}
     >
       {/* Decorative Circle */}
 
@@ -47,7 +39,8 @@ export default function WhyUs() {
         "
       />
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      {content && (
+      <div className="relative mx-auto max-w-7xl px-6 animate-fade-in">
 
         {/* =========================================
             HEADING
@@ -57,17 +50,19 @@ export default function WhyUs() {
 
           <div>
 
-            <span
-              className="
-                text-sm
-                font-semibold
-                uppercase
-                tracking-widest
-                text-[#E0C98A]
-              "
-            >
-              Why Choose Us
-            </span>
+            {content.label && (
+              <span
+                className="
+                  text-sm
+                  font-semibold
+                  uppercase
+                  tracking-widest
+                  text-[#E0C98A]
+                "
+              >
+                {content.label}
+              </span>
+            )}
 
             <h2
               className="
@@ -79,7 +74,7 @@ export default function WhyUs() {
                 sm:text-4xl
               "
             >
-              Our success rates speak for themselves
+              {content.heading}
             </h2>
 
           </div>
@@ -87,20 +82,15 @@ export default function WhyUs() {
 
           {/* Description */}
 
-          <p
-            className="
-              text-[#F8F4EE]/90
-            "
-          >
-            At{" "}
-            <strong className="text-[#E0C98A]">
-              Conceive IVF Fertility Centre
-            </strong>
-            , we offer state-of-the-art facilities, personalized treatment
-            plans, and a team of expert fertility specialists dedicated to
-            your success. Our holistic approach ensures emotional and
-            physical support throughout your journey to parenthood.
-          </p>
+          {content.description && (
+            <p
+              className="
+                text-[#F8F4EE]/90
+              "
+            >
+              {withBold(content.description, "text-[#E0C98A]")}
+            </p>
+          )}
 
         </div>
 
@@ -109,83 +99,88 @@ export default function WhyUs() {
             CARDS
         ========================================= */}
 
-        <div
-          className="
-            mt-14
-            grid
-            gap-6
-            md:grid-cols-2
-            lg:grid-cols-3
-          "
-        >
+        {content.items.length > 0 && (
+          <div
+            className="
+              mt-14
+              grid
+              gap-6
+              md:grid-cols-2
+              lg:grid-cols-3
+            "
+          >
 
-          {reasons.map((r, i) => (
+            {content.items.map((r, i) => (
 
-            <div
-              key={r.title}
-              className="
-                rounded-3xl
-                border
-                border-[#E0C98A]/20
-                bg-white/10
-                p-7
-                backdrop-blur-sm
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-[#C6A15B]/40
-                hover:bg-white/15
-              "
-            >
-
-              {/* Number */}
-
-              <span
+              <div
+                key={i}
                 className="
-                  font-display
-                  text-4xl
-                  font-bold
-                  text-[#C6A15B]
+                  rounded-3xl
+                  border
+                  border-[#E0C98A]/20
+                  bg-white/10
+                  p-7
+                  backdrop-blur-sm
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-[#C6A15B]/40
+                  hover:bg-white/15
                 "
               >
-                0{i + 1}
-              </span>
+
+                {/* Number */}
+
+                <span
+                  className="
+                    font-display
+                    text-4xl
+                    font-bold
+                    text-[#C6A15B]
+                  "
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
 
 
-              {/* Title */}
+                {/* Title */}
 
-              <h3
-                className="
-                  mt-4
-                  text-lg
-                  font-bold
-                  text-white
-                "
-              >
-                {r.title}
-              </h3>
+                <h3
+                  className="
+                    mt-4
+                    text-lg
+                    font-bold
+                    text-white
+                  "
+                >
+                  {r.title}
+                </h3>
 
 
-              {/* Description */}
+                {/* Description */}
 
-              <p
-                className="
-                  mt-2
-                  text-sm
-                  leading-relaxed
-                  text-[#F8F4EE]/80
-                "
-              >
-                {r.desc}
-              </p>
+                {r.description && (
+                  <p
+                    className="
+                      mt-2
+                      text-sm
+                      leading-relaxed
+                      text-[#F8F4EE]/80
+                    "
+                  >
+                    {r.description}
+                  </p>
+                )}
 
-            </div>
+              </div>
 
-          ))}
+            ))}
 
-        </div>
+          </div>
+        )}
 
       </div>
+      )}
     </section>
   );
 }

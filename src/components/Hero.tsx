@@ -1,16 +1,47 @@
-import { useState } from "react";
+import { useEffect, type FormEvent } from "react";
+import { useSiteContent } from "../hooks/useSiteContent";
+import { digitsOnly, useLeadForm } from "../hooks/useLeadForm";
+import { resolveMediaUrl } from "../lib/api";
+import { withLineBreaks } from "../utils/text";
+import {
+  HOME_BANNER_KEY,
+  homeBannerDefaults,
+  type HomeBannerContent,
+} from "../content/homeBanner";
 
 export default function Hero() {
-  const [submitted, setSubmitted] = useState(false);
+  const content = useSiteContent(HOME_BANNER_KEY, homeBannerDefaults);
+  return <HeroView content={content} />;
+}
 
-  const handleSubmit = (e) => {
+/*
+ * Pure banner markup — also used by the admin panel for the live preview.
+ * `content` is null while the first load is in flight. In `preview` mode the
+ * enquiry form doesn't create a lead.
+ */
+export function HeroView({ content, preview = false }: { content: HomeBannerContent | null; preview?: boolean }) {
+  const form = useLeadForm(
+    "home-banner",
+    { name: "", phone: "", treatment: "", message: "" },
+    preview
+  );
+
+  // Show the "submitted" state briefly, then let visitors send another request
+  const { status, reset } = form;
+  useEffect(() => {
+    if (status !== "sent") return;
+    const t = setTimeout(reset, 4000);
+    return () => clearTimeout(t);
+  }, [status, reset]);
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 3000);
+    form.submit(form.values);
   };
+
+  const backgroundImage = content?.backgroundImage
+    ? `url("${resolveMediaUrl(content.backgroundImage).replace(/"/g, "%22")}")`
+    : undefined;
 
   return (
     <>
@@ -37,10 +68,6 @@ export default function Hero() {
           position: absolute;
           inset: 0;
           z-index: -2;
-
-          background-image: url(
-            "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=2200&q=90"
-          );
 
           background-size: cover;
           background-position: center center;
@@ -796,12 +823,16 @@ export default function Hero() {
       >
 
         {/* Background */}
-        <div className="conceive-hero-image" />
+        <div
+          className="conceive-hero-image"
+          style={{ backgroundImage }}
+        />
 
         {/* Overlay */}
         <div className="conceive-hero-overlay" />
 
-        <div className="conceive-hero-container">
+        {content && (
+        <div className="conceive-hero-container animate-fade-in">
 
           {/* =====================================
               LEFT CONTENT
@@ -809,79 +840,75 @@ export default function Hero() {
 
           <div className="conceive-hero-content">
 
-            <span className="conceive-eyebrow">
-              CONCEIVE IVF FERTILITY CENTRE
-            </span>
+            {content.eyebrow && (
+              <span className="conceive-eyebrow">
+                {content.eyebrow}
+              </span>
+            )}
 
             <h1 className="conceive-hero-title">
-              Your journey
-              <br />
-              to parenthood
-              <br />
-              <em>starts here.</em>
+              {withLineBreaks(content.title)}
+              {content.titleHighlight && (
+                <>
+                  <br />
+                  <em>{content.titleHighlight}</em>
+                </>
+              )}
             </h1>
 
-            <p className="conceive-description">
-              Fifteen years with Dr. Neha Gupta. IVF, ICSI and IUI,
-              a quiet, wonderfully bench, and a free first visit —
-              opposite Town Park, Dabwali Road, Sirsa.
-            </p>
+            {content.description && (
+              <p className="conceive-description">
+                {content.description}
+              </p>
+            )}
 
-            <div className="conceive-buttons">
+            {(content.primaryButton.label || content.secondaryButton.label) && (
+              <div className="conceive-buttons">
 
-              <a
-                href="#contact"
-                className="conceive-btn conceive-btn-primary"
-              >
-                Book a free first visit
-                <span>→</span>
-              </a>
+                {content.primaryButton.label && (
+                  <a
+                    href={content.primaryButton.link || "#contact"}
+                    className="conceive-btn conceive-btn-primary"
+                  >
+                    {content.primaryButton.label}
+                    <span>→</span>
+                  </a>
+                )}
 
-              {/* <a
-                href=""
-                className="conceive-btn conceive-btn-outline"
-              >
-                Our services
-                <span>→</span>
-              </a> */}
+                {content.secondaryButton.label && (
+                  <a
+                    href={content.secondaryButton.link || "#"}
+                    className="conceive-btn conceive-btn-outline"
+                  >
+                    {content.secondaryButton.label}
+                    <span>→</span>
+                  </a>
+                )}
 
-            </div>
+              </div>
+            )}
 
-            <div className="conceive-tagline">
-              Creating Little Miracles.
-            </div>
+            {content.tagline && (
+              <div className="conceive-tagline">
+                {content.tagline}
+              </div>
+            )}
 
             {/* STATS */}
 
-            <div className="conceive-stats">
+            {content.stats.length > 0 && (
+              <div className="conceive-stats">
+                {content.stats.map((stat, i) => (
+                  <div key={i} className="conceive-stat">
+                    <strong>{stat.value}</strong>
 
-              <div className="conceive-stat">
-                <strong>15+</strong>
-
-                <span>
-                  YEARS OF CARE
-                </span>
+                    <span>
+                      {withLineBreaks(stat.label)}
+                    </span>
+                  </div>
+                ))}
               </div>
-
-              <div className="conceive-stat">
-                <strong>Free</strong>
-
-                <span>
-                  FIRST
-                  <br />
-                  CONSULTATION
-                </span>
-              </div>
-
-              <div className="conceive-stat">
-                <strong>7 days</strong>
-
-                <span>
-                  10:00 – 18:00
-                </span>
-              </div>
-
-            </div>
+            )}
 
           </div>
 
@@ -894,18 +921,21 @@ export default function Hero() {
 
             <div className="conceive-enquiry-top">
 
-              <span className="conceive-enquiry-label">
-                GET IN TOUCH
-              </span>
+              {content.enquiry.label && (
+                <span className="conceive-enquiry-label">
+                  {content.enquiry.label}
+                </span>
+              )}
 
               <h2 className="conceive-enquiry-title">
-                Book a Consultation
+                {content.enquiry.title}
               </h2>
 
-              <p className="conceive-enquiry-subtitle">
-                Take the first step towards your
-                parenthood journey.
-              </p>
+              {content.enquiry.subtitle && (
+                <p className="conceive-enquiry-subtitle">
+                  {content.enquiry.subtitle}
+                </p>
+              )}
 
             </div>
 
@@ -913,12 +943,18 @@ export default function Hero() {
             <form
               className="conceive-form"
               onSubmit={handleSubmit}
+              style={{ position: "relative" }}
             >
+              {form.honeypot}
 
               <input
                 type="text"
                 className="conceive-input"
                 placeholder="Your Name"
+                value={form.values.name}
+                onChange={(e) => form.set("name", e.target.value)}
+                minLength={2}
+                maxLength={80}
                 required
               />
 
@@ -926,69 +962,69 @@ export default function Hero() {
                 type="tel"
                 className="conceive-input"
                 placeholder="Mobile Number"
-                maxLength="10"
+                inputMode="numeric"
+                pattern="[0-9]{10}"
+                title="Please enter a 10-digit mobile number"
+                value={form.values.phone}
+                onChange={(e) => form.set("phone", digitsOnly(e.target.value))}
                 required
               />
 
-              {/* <input
-                type="email"
-                className="conceive-input"
-                placeholder="Email Address"
-              /> */}
-
               <select
                 className="conceive-select"
-                defaultValue=""
+                value={form.values.treatment}
+                onChange={(e) => form.set("treatment", e.target.value)}
                 required
               >
                 <option value="" disabled>
                   Select Treatment
                 </option>
 
-                <option value="ivf">
-                  IVF Treatment
-                </option>
-
-                <option value="icsi">
-                  ICSI Treatment
-                </option>
-
-                <option value="iui">
-                  IUI Treatment
-                </option>
-
-                <option value="fertility">
-                  Fertility Consultation
-                </option>
-
-                <option value="other">
-                  Other
-                </option>
+                {content.enquiry.treatments.map((treatment) => (
+                  <option key={treatment} value={treatment}>
+                    {treatment}
+                  </option>
+                ))}
               </select>
 
               <textarea
                 className="conceive-textarea"
                 placeholder="Tell us about your requirement"
+                value={form.values.message}
+                onChange={(e) => form.set("message", e.target.value)}
+                maxLength={2000}
               />
 
               <button
                 type="submit"
                 className="conceive-submit"
+                disabled={form.status === "sending"}
               >
-                {submitted
+                {form.status === "sent"
                   ? "Request Submitted ✓"
-                  : "Request a Consultation →"}
+                  : form.status === "sending"
+                    ? "Sending..."
+                    : `${content.enquiry.submitText} →`}
               </button>
+
+              {form.error && (
+                <p role="alert" style={{ margin: 0, color: "#b91c1c", fontSize: 13, textAlign: "center" }}>
+                  {form.error}
+                </p>
+              )}
 
             </form>
 
-            <p className="conceive-form-note">
-              Your information is safe and confidential.
-            </p>
+            {content.enquiry.note && (
+              <p className="conceive-form-note">
+                {content.enquiry.note}
+              </p>
+            )}
 
           </div>
 
         </div>
+        )}
 
       </section>
     </>

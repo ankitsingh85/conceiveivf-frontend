@@ -1,8 +1,20 @@
-import videoImage from "../images/vid-img.png";
+import { useSiteContent } from "../hooks/useSiteContent";
+import { resolveMediaUrl } from "../lib/api";
+import { HOME_VIDEO_KEY, homeVideoDefaults, type HomeVideoContent } from "../content/homeSections";
 
 export default function VideoSection() {
+  const content = useSiteContent(HOME_VIDEO_KEY, homeVideoDefaults);
+  return <VideoView content={content} />;
+}
+
+// Pure markup — also used by the admin live preview. `content` is null while loading.
+export function VideoView({ content }: { content: HomeVideoContent | null }) {
   return (
-    <section id="videos" className="video-section">
+    <section
+      id="videos"
+      className="video-section"
+      style={content ? undefined : { minHeight: 640 }}
+    >
       <style>{`
         .video-section {
           width: 100%;
@@ -272,24 +284,34 @@ export default function VideoSection() {
         }
       `}</style>
 
-      <div className="video-container">
+      {content && (
+      <div className="video-container animate-fade-in">
 
         {/* HEADING */}
 
         <div className="video-heading">
 
-          <span className="video-label">
-            Professional Results
-          </span>
+          {content.label && (
+            <span className="video-label">
+              {content.label}
+            </span>
+          )}
 
           <h2 className="video-title">
-            The Best Possible <span>Results</span>
+            {content.title}
+            {content.titleHighlight && (
+              <>
+                {" "}
+                <span>{content.titleHighlight}</span>
+              </>
+            )}
           </h2>
 
-          <p className="video-description">
-            Creating miracles every day – trusted care, compassionate
-            support, and successful journeys to parenthood!
-          </p>
+          {content.description && (
+            <p className="video-description">
+              {content.description}
+            </p>
+          )}
 
         </div>
 
@@ -297,39 +319,46 @@ export default function VideoSection() {
 
         <div className="video-wrapper">
 
-          <img
-            src={videoImage}
-            alt="Conceive IVF Fertility Centre"
-            className="video-poster"
-          />
+          {content.posterImage && (
+            <img
+              src={resolveMediaUrl(content.posterImage)}
+              alt={content.posterAlt}
+              className="video-poster"
+            />
+          )}
 
-          <a
-            href="https://www.youtube.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="video-overlay"
-            aria-label="Play video"
-          >
-            <span className="video-play-button" />
-          </a>
+          {content.videoUrl && (
+            <a
+              href={content.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="video-overlay"
+              aria-label="Play video"
+            >
+              <span className="video-play-button" />
+            </a>
+          )}
 
         </div>
 
         {/* BOTTOM */}
 
-        <div className="video-bottom">
+        {content.bottomText && (
+          <div className="video-bottom">
 
-          <span className="video-bottom-line" />
+            <span className="video-bottom-line" />
 
-          <span className="video-bottom-text">
-            Your journey. Our expertise. Your miracle.
-          </span>
+            <span className="video-bottom-text">
+              {content.bottomText}
+            </span>
 
-          <span className="video-bottom-line" />
+            <span className="video-bottom-line" />
 
-        </div>
+          </div>
+        )}
 
       </div>
+      )}
     </section>
   );
 }

@@ -8,6 +8,16 @@
   --color-teal-brand: #157f86;
   --color-teal-soft: #e6f4f4;
   --color-cream: #fffaf6;
+
+  /* Website palette (also used by the admin panel) */
+  --color-plum: #3b2940;
+  --color-plum-deep: #2f2035;
+  --color-gold: #c6a15b;
+  --color-gold-deep: #9c7a3c;
+  --color-gold-light: #e0c98a;
+  --color-sand: #f8f4ee;
+  --color-line: #e8dfd2;
+  --color-muted: #5f5660;
   --font-display: "Playfair Display", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
@@ -36,3 +46,55 @@ body {
 .delay-1 { animation-delay: 0.15s; }
 .delay-2 { animation-delay: 0.3s; }
 .delay-3 { animation-delay: 0.45s; }
+
+/* =========================
+   ADMIN DASHBOARD
+========================== */
+@keyframes growY {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+.animate-grow-y {
+  transform-origin: bottom;
+  animation: growY 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes growX {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.animate-grow-x {
+  transform-origin: left;
+  animation: growX 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in { animation: fadeIn 0.8s ease-out both; }
+
+@keyframes dropdown {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-dropdown {
+  transform-origin: top right;
+  animation: dropdown 0.18s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .animate-float,
+  .animate-fade-in,
+  .animate-dropdown,
+  .animate-grow-y,
+  .animate-grow-x {
+    animation: none !important;
+  }
+}

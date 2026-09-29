@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLeadForm } from "../hooks/useLeadForm";
 
 interface BookAppointmentModalProps {
   isOpen: boolean;
@@ -16,6 +17,8 @@ const BookAppointmentModal: React.FC<BookAppointmentModalProps> = ({
     date: "",
     time: "",
   });
+
+  const lead = useLeadForm("appointment", {});
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -54,7 +57,7 @@ const BookAppointmentModal: React.FC<BookAppointmentModalProps> = ({
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Mobile number validation
@@ -63,18 +66,27 @@ const BookAppointmentModal: React.FC<BookAppointmentModalProps> = ({
       return;
     }
 
-    console.log("Appointment:", formData);
-
-    alert("Appointment request submitted successfully!");
-
-    setFormData({
-      name: "",
-      number: "",
-      service: "",
-      date: "",
-      time: "",
+    const saved = await lead.submit({
+      name: formData.name,
+      phone: formData.number,
+      treatment: formData.service,
+      preferredDate: formData.date,
+      preferredTime: formData.time,
     });
 
+    if (saved) {
+      setFormData({
+        name: "",
+        number: "",
+        service: "",
+        date: "",
+        time: "",
+      });
+    }
+  };
+
+  const handleClose = () => {
+    lead.reset();
     onClose();
   };
 
@@ -82,7 +94,7 @@ const BookAppointmentModal: React.FC<BookAppointmentModalProps> = ({
     <>
       <div
         className="appointment-overlay"
-        onClick={onClose}
+        onClick={handleClose}
       >
         <div
           className="appointment-modal"
@@ -92,12 +104,39 @@ const BookAppointmentModal: React.FC<BookAppointmentModalProps> = ({
           <button
             type="button"
             className="appointment-close"
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Close appointment popup"
           >
             ×
           </button>
 
+          {lead.status === "sent" ? (
+            /* Success */
+            <div className="appointment-header" style={{ textAlign: "center" }}>
+              <span className="appointment-small-title">
+                REQUEST RECEIVED
+              </span>
+
+              <h2>
+                Thank you!
+              </h2>
+
+              <p>
+                Your appointment request has been sent. Our team will call you
+                shortly to confirm the date and time.
+              </p>
+
+              <button
+                type="button"
+                className="appointment-submit"
+                style={{ marginTop: 24 }}
+                onClick={handleClose}
+              >
+                Close
+              </button>
+            </div>
+          ) : (
+          <>
           {/* Header */}
           <div className="appointment-header">
             <span className="appointment-small-title">
@@ -118,7 +157,10 @@ const BookAppointmentModal: React.FC<BookAppointmentModalProps> = ({
           <form
             className="appointment-form"
             onSubmit={handleSubmit}
+            style={{ position: "relative" }}
           >
+            {lead.honeypot}
+
             {/* Name */}
             <div className="appointment-field">
               <label htmlFor="appointment-name">
@@ -244,18 +286,27 @@ const BookAppointmentModal: React.FC<BookAppointmentModalProps> = ({
               />
             </div>
 
+            {lead.error && (
+              <p role="alert" style={{ margin: 0, color: "#b91c1c", fontSize: 13 }}>
+                {lead.error}
+              </p>
+            )}
+
             {/* Submit */}
             <button
               type="submit"
               className="appointment-submit"
+              disabled={lead.status === "sending"}
             >
-              Book Appointment
+              {lead.status === "sending" ? "Sending..." : "Book Appointment"}
 
               <span>
                 →
               </span>
             </button>
           </form>
+          </>
+          )}
         </div>
       </div>
 

@@ -1,64 +1,73 @@
 import { useEffect, useState } from "react";
-
-const items = [
-  {
-    name: "Neha & Rohan",
-    city: "Hyderabad",
-    text: "After 6 years of trying, Conceive IVF gave us our miracle. The doctors were honest, kind and always available. We can't thank them enough for our baby girl.",
-  },
-  {
-    name: "Sneha & Arjun",
-    city: "Bengaluru",
-    text: "The team treated us like family. Every step was explained clearly and the counsellor helped us stay strong emotionally. Successful on our very first cycle!",
-  },
-  {
-    name: "Pooja & Vikram",
-    city: "Chennai",
-    text: "World-class lab, transparent pricing and truly compassionate staff. Our twins are here because of this wonderful team. Highly recommended.",
-  },
-];
+import { useSiteContent } from "../hooks/useSiteContent";
+import { resolveMediaUrl } from "../lib/api";
+import {
+  HOME_TESTIMONIALS_KEY,
+  homeTestimonialsDefaults,
+  type HomeTestimonialsContent,
+} from "../content/homeSections";
 
 export default function Testimonials() {
+  const content = useSiteContent(HOME_TESTIMONIALS_KEY, homeTestimonialsDefaults);
+  return <TestimonialsView content={content} />;
+}
+
+// Pure markup — also used by the admin live preview. `content` is null while loading.
+export function TestimonialsView({ content }: { content: HomeTestimonialsContent | null }) {
   const [i, setI] = useState(0);
+  const count = content?.items.length ?? 0;
 
   useEffect(() => {
+    if (count < 2) return;
     const t = setInterval(() => {
-      setI((p) => (p + 1) % items.length);
+      setI((p) => (p + 1) % count);
     }, 5000);
 
     return () => clearInterval(t);
-  }, []);
+  }, [count]);
 
-  const t = items[i];
+  if (!content || count === 0) {
+    return <section id="testimonials" className="py-14" style={{ minHeight: content ? 0 : 560 }} />;
+  }
+
+  // Keep the index valid if testimonials were removed
+  const current = i % count;
+  const t = content.items[current];
 
   return (
     <section id="testimonials" className="py-14">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-6 animate-fade-in">
         <div className="grid items-center gap-14 lg:grid-cols-2">
 
           {/* Image */}
           <div className="relative">
-            <img
-              src="https://images.pexels.com/photos/35759308/pexels-photo-35759308.png?auto=compress&cs=tinysrgb&fit=crop&h=700&w=800"
-              alt="Happy family"
-              className="h-[460px] w-full rounded-[2.5rem] object-cover shadow-xl"
-            />
+            {content.image && (
+              <img
+                src={resolveMediaUrl(content.image)}
+                alt={content.imageAlt}
+                className="h-[460px] w-full rounded-[2.5rem] object-cover shadow-xl"
+              />
+            )}
 
-            <div className="absolute right-6 bottom-6 rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur">
-              <p className="text-sm font-semibold text-[#3B2940]">
-                "Every miracle begins with hope"
-              </p>
-            </div>
+            {content.imageQuote && (
+              <div className="absolute right-6 bottom-6 rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur">
+                <p className="text-sm font-semibold text-[#3B2940]">
+                  {content.imageQuote}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Content */}
           <div>
-            <span className="text-sm font-semibold uppercase tracking-widest text-[#C6A15B]">
-              Success Stories
-            </span>
+            {content.label && (
+              <span className="text-sm font-semibold uppercase tracking-widest text-[#C6A15B]">
+                {content.label}
+              </span>
+            )}
 
             <h2 className="mt-3 font-display text-3xl font-bold text-[#3B2940] sm:text-4xl">
-              Stories of hope, joy and new beginnings
+              {content.heading}
             </h2>
 
             {/* Testimonial Card */}
@@ -68,7 +77,7 @@ export default function Testimonials() {
               </span>
 
               <p
-                key={i}
+                key={current}
                 className="fade-up -mt-4 text-lg leading-relaxed text-[#5F5660]"
               >
                 {t.text}
@@ -80,9 +89,11 @@ export default function Testimonials() {
                     {t.name}
                   </p>
 
-                  <p className="text-sm text-[#7A7078]">
-                    {t.city}
-                  </p>
+                  {t.city && (
+                    <p className="text-sm text-[#7A7078]">
+                      {t.city}
+                    </p>
+                  )}
                 </div>
 
                 <div className="text-[#C6A15B]">
@@ -92,20 +103,22 @@ export default function Testimonials() {
             </div>
 
             {/* Slider Dots */}
-            <div className="mt-6 flex gap-2">
-              {items.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setI(idx)}
-                  aria-label={`Story ${idx + 1}`}
-                  className={`h-2.5 rounded-full transition-all ${
-                    idx === i
-                      ? "w-8 bg-[#C6A15B]"
-                      : "w-2.5 bg-[#E0C98A]"
-                  }`}
-                />
-              ))}
-            </div>
+            {count > 1 && (
+              <div className="mt-6 flex gap-2">
+                {content.items.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setI(idx)}
+                    aria-label={`Story ${idx + 1}`}
+                    className={`h-2.5 rounded-full transition-all ${
+                      idx === current
+                        ? "w-8 bg-[#C6A15B]"
+                        : "w-2.5 bg-[#E0C98A]"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
         </div>

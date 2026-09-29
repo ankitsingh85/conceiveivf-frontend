@@ -1,77 +1,25 @@
-import img1 from "../images/img1.webp";
-import img2 from "../images/img2.webp";
-import img3 from "../images/img3.webp";
-import img4 from "../images/img4.webp";
-import img5 from "../images/img5.webp";
-import img6 from "../images/img6.webp";
-import img7 from "../images/img7.webp";
-import img8 from "../images/img8.webp";
-import img9 from "../images/img9.webp";
-import img10 from "../images/img10.webp";
-import img11 from "../images/img11.webp";
+import SmartLink from "./SmartLink";
+import { useSiteContent } from "../hooks/useSiteContent";
+import { resolveMediaUrl } from "../lib/api";
+import {
+  HOME_TREATMENTS_KEY,
+  homeTreatmentsDefaults,
+  type HomeTreatmentsContent,
+} from "../content/homeSections";
 
 export default function ParenthoodJourney() {
-  const treatments = [
-    {
-      title: "In Vitro Fertilization (IVF)",
-      image: img1,
-      link: "#",
-    },
-    {
-      title: "Intra Uterine Insemination (IUI)",
-      image: img2,
-      link: "#",
-    },
-    {
-      title: "ICSI Treatment",
-      image: img3,
-        
-      link: "#",
-    },
-    {
-      title: "Egg Freezing",
-      image:img4,
-      link: "#",
-    },
-    {
-      title: "Reproductive Surgery",
-      image:img5,
-      link: "#",
-    },
-    {
-      title: "Semen / Sperm Freezing",
-      image:img6,
-      link: "#",
-    },
-    {
-      title: "InFertility Assessment - Male",
-      image:img7,
-      link: "#",
-    },
-    {
-      title: "InFertility Assessment - Female",
-      image:img8,
-      link: "#",
-    },
-    {
-      title: "Embryology",
-      image:img9,
-      link: "#",
-    },
-    {
-      title: "CASA",
-      image:img10,
-      link: "#",
-    },
-    {
-      title: "PGS / PGD",
-      image:img11,
-      link: "#",
-    },
-  ];
+  const content = useSiteContent(HOME_TREATMENTS_KEY, homeTreatmentsDefaults);
+  return <ParenthoodJourneyView content={content} />;
+}
 
+// Pure markup — also used by the admin live preview. `content` is null while loading.
+export function ParenthoodJourneyView({ content }: { content: HomeTreatmentsContent | null }) {
   return (
-    <section id="parenthood-journey" className="parenthood-journey">
+    <section
+      id="parenthood-journey"
+      className="parenthood-journey"
+      style={content ? undefined : { minHeight: 700 }}
+    >
       <style>{`
         /* =========================================
            PARENTHOOD JOURNEY
@@ -579,42 +527,48 @@ export default function ParenthoodJourney() {
         }
       `}</style>
 
-      <div className="parenthood-journey-container">
+      {content && (
+      <div className="parenthood-journey-container animate-fade-in">
 
         {/* HEADING */}
         <div className="journey-heading">
 
-          <div className="journey-small-title">
-            Conceive IVF Fertility Centre
-          </div>
+          {content.label && (
+            <div className="journey-small-title">
+              {content.label}
+            </div>
+          )}
 
           <h2>
-            Your Journey to <span>Parenthood</span> Starts Here
+            {content.heading}
           </h2>
 
-          <p>
-            Explore our advanced fertility treatments designed to support
-            you at every step of your journey towards parenthood.
-          </p>
+          {content.description && (
+            <p>
+              {content.description}
+            </p>
+          )}
 
         </div>
 
         {/* TREATMENTS */}
         <div className="treatment-grid">
 
-          {treatments.map((treatment, index) => (
-            <a
-              href={treatment.link}
+          {content.items.map((treatment, index) => (
+            <SmartLink
+              to={treatment.link || "#"}
               className="treatment-item"
               key={index}
             >
 
               <div className="treatment-image-wrapper">
-                <img
-                  src={treatment.image}
-                  alt={treatment.title}
-                  className="treatment-image"
-                />
+                {treatment.image && (
+                  <img
+                    src={resolveMediaUrl(treatment.image)}
+                    alt={treatment.title}
+                    className="treatment-image"
+                  />
+                )}
               </div>
 
               <div className="treatment-content">
@@ -633,12 +587,13 @@ export default function ParenthoodJourney() {
                 →
               </div>
 
-            </a>
+            </SmartLink>
           ))}
 
         </div>
 
       </div>
+      )}
     </section>
   );
 }
