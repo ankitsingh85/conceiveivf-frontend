@@ -35,7 +35,7 @@ export function TestimonialsView({ content }: { content: HomeTestimonialsContent
   const t = content.items[current];
 
   return (
-    <section id="testimonials" className="py-14">
+    <section id="testimonials" className="py-10">
       <div className="mx-auto max-w-7xl px-6 animate-fade-in">
         <div className="grid items-center gap-14 lg:grid-cols-2">
 

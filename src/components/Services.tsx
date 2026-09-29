@@ -16,9 +16,7 @@ export function WelcomeView({ content }: { content: HomeWelcomeContent | null })
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
-        .about-font-display {
-          font-family: "Playfair Display", Georgia, serif;
-        }
+       
 
         .about-font-body {
           font-family: "Manrope", Arial, sans-serif;

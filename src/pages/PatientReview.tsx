@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const reviewHighlights = [
@@ -45,7 +44,7 @@ const treatmentServices = [
     no: "02",
     title: "IUI",
     text: "Intrauterine insemination as an assisted reproductive treatment option.",
-    link: "/iui/",
+    link: "/iui-intrauterine-insemination",
   },
   {
     no: "03",
@@ -59,15 +58,6 @@ const treatmentServices = [
     text: "Fertility preservation through retrieval and cryopreservation of eggs.",
     link: "/egg-freezing/",
   },
-];
-
-const patientValues = [
-  "Personalised fertility care",
-  "Advanced reproductive technology",
-  "Experienced fertility specialists",
-  "Dedicated embryology support",
-  "Transparent treatment guidance",
-  "Emotional and physical support",
 ];
 
 const videoItems = [
@@ -92,35 +82,23 @@ const videoItems = [
       "Explore the patient-centred approach and fertility care provided by Conceive IVF.",
     videoId: "",
   },
-];
-
-const journeySteps = [
   {
-    title: "Initial Consultation",
-    text: "Discuss your fertility history, concerns and goals.",
-  },
-  {
-    title: "Fertility Assessment",
-    text: "Relevant investigations help understand individual fertility factors.",
-  },
-  {
-    title: "Treatment Planning",
-    text: "The treatment approach is tailored according to your needs.",
-  },
-  {
-    title: "Ongoing Support",
-    text: "The fertility team guides you through each stage of treatment.",
+    no: "04",
+    title: "Conceive IVF Experience",
+    description:
+      "Explore the patient-centred approach and fertility care provided by Conceive IVF.",
+    videoId: "",
   },
 ];
 
 export default function PatientReview() {
   return (
-    <main className="bg-white text-[#183f45]">
+    <main className="bg-white text-[#3B2940]">
 
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#075f68]">
+      <section className="relative overflow-hidden bg-[#3B2940]">
 
         <div className="absolute inset-0">
           <img
@@ -129,10 +107,10 @@ export default function PatientReview() {
             className="h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-[#075f68]/90" />
+          <div className="absolute inset-0 bg-[#3B2940]/90" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
 
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
 
@@ -154,16 +132,19 @@ export default function PatientReview() {
 
               <div className="mt-8 flex flex-wrap gap-4">
 
-                <Link
-                  to="/contact"
-                  className="rounded-full bg-[#dc3f73] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+                <button
+                  type="button"
+                  onClick={() =>
+                    window.dispatchEvent(new Event("openAppointment"))
+                  }
+                  className="rounded-full bg-[#C6A15B] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
                 >
                   Book Appointment
-                </Link>
+                </button>
 
                 <a
                   href="#patient-experience"
-                  className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#075f68]"
+                  className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#3B2940]"
                 >
                   Patient Experience
                 </a>
@@ -180,7 +161,7 @@ export default function PatientReview() {
       {/* =========================================================
           INTRO
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
@@ -196,15 +177,15 @@ export default function PatientReview() {
 
           <div>
 
-            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Patient Reviews For Conceive IVF
             </p>
 
-            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Care that puts your journey first
             </h2>
 
-            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
 
               <p>
                 At Conceive IVF Fertility Centre, patient care is built around
@@ -228,37 +209,37 @@ export default function PatientReview() {
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
 
-              <div className="rounded-2xl bg-[#fff0f4] p-5">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
 
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#dc3f73]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   Care
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Patient focused
                 </p>
 
               </div>
 
-              <div className="rounded-2xl bg-[#f0fafb] p-5">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
 
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#08727c]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   Expert
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Fertility team
                 </p>
 
               </div>
 
-              <div className="col-span-2 rounded-2xl bg-[#f7f7f7] p-5 sm:col-span-1">
+              <div className="col-span-2 rounded-2xl bg-[#F8F4EE] p-5 sm:col-span-1">
 
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#183f45]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#3B2940]">
                   Support
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Every step
                 </p>
 
@@ -276,22 +257,22 @@ export default function PatientReview() {
       ========================================================= */}
       <section
         id="patient-experience"
-        className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+        className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10"
       >
 
         <div className="mx-auto max-w-7xl">
 
           <div className="mx-auto max-w-3xl text-center">
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Patient Experience
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[42px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[42px]">
               What patients value at Conceive IVF
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Conceive IVF&apos;s patient-centric approach combines fertility
               expertise with personalised care and a supportive treatment
               environment.
@@ -305,18 +286,18 @@ export default function PatientReview() {
 
               <div
                 key={item.no}
-                className="rounded-[24px] border border-[#e7eeee] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="rounded-[24px] border border-[#E8DFD2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
 
-                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#dc3f73]/25">
+                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#C6A15B]/25">
                   {item.no}
                 </span>
 
-                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#183f45]">
+                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#3B2940]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {item.text}
                 </p>
 
@@ -332,22 +313,22 @@ export default function PatientReview() {
       {/* =========================================================
           VIDEOS
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
         <div className="mx-auto max-w-7xl">
 
           {/* Heading */}
           <div className="mx-auto max-w-3xl text-center">
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Patient Guide
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[42px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[42px]">
               Patient Review Videos
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Watch helpful videos to understand the fertility journey,
               treatment process and patient-focused care at Conceive IVF.
             </p>
@@ -355,13 +336,13 @@ export default function PatientReview() {
           </div>
 
           {/* Videos Grid */}
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 
             {videoItems.map((video) => (
 
               <div
                 key={video.no}
-                className="group overflow-hidden rounded-[24px] border border-[#e7eeee] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group overflow-hidden rounded-[24px] border border-[#E8DFD2] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
 
                 {/* Video Thumbnail */}
@@ -374,7 +355,7 @@ export default function PatientReview() {
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#075f68] to-[#08727c]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#3B2940] to-[#C6A15B]">
 
                       <div className="absolute -right-12 -top-12 h-44 w-44 rounded-full border-[30px] border-white/10" />
 
@@ -382,7 +363,7 @@ export default function PatientReview() {
 
                       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 
-                        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#dc3f73] text-white shadow-lg transition duration-300 group-hover:scale-110">
+                        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#C6A15B] text-white shadow-lg transition duration-300 group-hover:scale-110">
 
                           <svg
                             width="24"
@@ -401,9 +382,9 @@ export default function PatientReview() {
                   )}
 
                   {video.videoId && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#075f68]/20 transition group-hover:bg-[#075f68]/40">
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#3B2940]/20 transition group-hover:bg-[#3B2940]/40">
 
-                      <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#dc3f73] text-white shadow-lg transition duration-300 group-hover:scale-110">
+                      <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#C6A15B] text-white shadow-lg transition duration-300 group-hover:scale-110">
 
                         <svg
                           width="24"
@@ -424,21 +405,21 @@ export default function PatientReview() {
                 {/* Video Content */}
                 <div className="p-6">
 
-                  <span className="font-['Manrope'] text-xs font-bold uppercase tracking-[0.1em] text-[#dc3f73]">
+                  <span className="font-['Manrope'] text-xs font-bold uppercase tracking-[0.1em] text-[#C6A15B]">
                     Video {video.no}
                   </span>
 
-                  <h3 className="mt-3 font-['Playfair_Display'] text-[23px] font-bold text-[#183f45]">
+                  <h3 className="mt-3 font-['Playfair_Display'] text-[23px] font-bold text-[#3B2940]">
                     {video.title}
                   </h3>
 
-                  <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                  <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                     {video.description}
                   </p>
 
                   <Link
                     to="/videos"
-                    className="mt-5 inline-flex items-center gap-2 font-['Manrope'] text-sm font-bold text-[#dc3f73] transition hover:text-[#c93666]"
+                    className="mt-5 inline-flex items-center gap-2 font-['Manrope'] text-sm font-bold text-[#C6A15B] transition hover:text-[#B08B48]"
                   >
                     Watch Video
                     <span className="transition group-hover:translate-x-1">
@@ -455,16 +436,16 @@ export default function PatientReview() {
           </div>
 
           {/* View All */}
-          <div className="mt-10 text-center">
+          {/* <div className="mt-10 text-center">
 
             <Link
               to="/videos"
-              className="inline-flex items-center justify-center rounded-full bg-[#075f68] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#064f57]"
+              className="inline-flex items-center justify-center rounded-full bg-[#3B2940] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#2F2035]"
             >
               View All Videos →
             </Link>
 
-          </div>
+          </div> */}
 
         </div>
       </section>
@@ -472,21 +453,21 @@ export default function PatientReview() {
       {/* =========================================================
           PATIENT-CENTRIC CARE
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      {/* <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
 
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
 
           <div>
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               A Patient-Centric Approach
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Personalised care throughout your fertility journey
             </h2>
 
-            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Conceive IVF describes its approach as patient-centric, with
               personalised treatment plans and support designed around each
               individual&apos;s fertility needs.
@@ -501,11 +482,11 @@ export default function PatientReview() {
                   className="flex items-center gap-3"
                 >
 
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#08727c] text-sm font-bold text-white">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#C6A15B] text-sm font-bold text-white">
                     ✓
                   </span>
 
-                  <span className="font-['Manrope'] text-sm font-semibold text-[#45575a]">
+                  <span className="font-['Manrope'] text-sm font-semibold text-[#5F5660]">
                     {item}
                   </span>
 
@@ -528,12 +509,12 @@ export default function PatientReview() {
           </div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* =========================================================
           TREATMENTS
       ========================================================= */}
-      <section className="bg-[#075f68] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[#3B2940] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
         <div className="mx-auto max-w-7xl">
 
@@ -564,7 +545,7 @@ export default function PatientReview() {
                 className="group rounded-[24px] border border-white/10 bg-white/10 p-7 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/15"
               >
 
-                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#dc3f73]">
+                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#C6A15B]">
                   {item.no}
                 </span>
 
@@ -576,7 +557,7 @@ export default function PatientReview() {
                   {item.text}
                 </p>
 
-                <span className="mt-5 inline-block font-['Manrope'] text-sm font-bold text-white transition group-hover:text-[#dc3f73]">
+                <span className="mt-5 inline-block font-['Manrope'] text-sm font-bold text-white transition group-hover:text-[#C6A15B]">
                   Explore Treatment →
                 </span>
 
@@ -592,7 +573,7 @@ export default function PatientReview() {
       {/* =========================================================
           CARE JOURNEY
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      {/* <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
 
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
 
@@ -608,15 +589,15 @@ export default function PatientReview() {
 
           <div>
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Your Fertility Journey
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               From consultation to personalised treatment
             </h2>
 
-            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Fertility treatment begins with understanding your individual
               medical and reproductive history. The fertility team can then
               discuss appropriate investigations and treatment options.
@@ -628,22 +609,22 @@ export default function PatientReview() {
 
                 <div
                   key={item.title}
-                  className="rounded-2xl bg-[#f8fbfb] p-5"
+                  className="rounded-2xl bg-[#F8F4EE] p-5"
                 >
 
                   <div className="flex items-center gap-3">
 
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#fff0f4] font-['Manrope'] text-xs font-bold text-[#dc3f73]">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F8F4EE] font-['Manrope'] text-xs font-bold text-[#C6A15B]">
                       0{index + 1}
                     </span>
 
-                    <h3 className="font-['Manrope'] text-base font-bold text-[#183f45]">
+                    <h3 className="font-['Manrope'] text-base font-bold text-[#3B2940]">
                       {item.title}
                     </h3>
 
                   </div>
 
-                  <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                  <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                     {item.text}
                   </p>
 
@@ -656,25 +637,25 @@ export default function PatientReview() {
           </div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* =========================================================
           REVIEW MESSAGE
       ========================================================= */}
-      <section className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      {/* <section className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
         <div className="mx-auto max-w-5xl">
 
           <div className="rounded-[32px] bg-white p-8 text-center shadow-sm sm:p-12">
 
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#fff0f4]">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#F8F4EE]">
 
               <svg
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#dc3f73"
+                stroke="#C6A15B"
                 strokeWidth="1.8"
               >
                 <path d="M7 8h10M7 12h7M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-5l-3 3v-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" />
@@ -682,11 +663,11 @@ export default function PatientReview() {
 
             </div>
 
-            <p className="mt-7 font-['Playfair_Display'] text-[25px] font-bold leading-tight text-[#183f45] sm:text-[34px]">
+            <p className="mt-7 font-['Playfair_Display'] text-[25px] font-bold leading-tight text-[#3B2940] sm:text-[34px]">
               Creating Little Miracles, One Family at a Time
             </p>
 
-            <p className="mx-auto mt-5 max-w-2xl font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mx-auto mt-5 max-w-2xl font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Conceive IVF&apos;s patient-first approach focuses on combining
               fertility expertise, advanced treatment options and compassionate
               support throughout the journey to parenthood.
@@ -703,7 +684,7 @@ export default function PatientReview() {
                     width="20"
                     height="20"
                     viewBox="0 0 24 24"
-                    fill="#dc3f73"
+                    fill="#C6A15B"
                   >
                     <path d="M12 2.5l2.94 5.95 6.56.95-4.75 4.63 1.12 6.54L12 17.48 6.13 20.57l1.12-6.54L2.5 9.4l6.56-.95L12 2.5Z" />
                   </svg>
@@ -714,25 +695,25 @@ export default function PatientReview() {
 
             </div>
 
-            <p className="mt-4 font-['Manrope'] text-xs text-[#8a9698]">
+            <p className="mt-4 font-['Manrope'] text-xs text-[#5F5660]">
               Patient-centred fertility care
             </p>
 
           </div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* =========================================================
           CTA
       ========================================================= */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#075f68] px-6 py-14 text-center sm:px-12">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#3B2940] px-6 py-14 text-center sm:px-12">
 
           <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/5" />
 
-          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#dc3f73]/20" />
+          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#C6A15B]/20" />
 
           <div className="relative mx-auto max-w-3xl">
 
@@ -752,19 +733,22 @@ export default function PatientReview() {
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
 
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full bg-[#dc3f73] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="inline-flex rounded-full bg-[#C6A15B] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Book Your Consultation
-              </Link>
+              </button>
 
-              <Link
+              {/* <Link
                 to="/videos"
-                className="inline-flex rounded-full border border-white/30 bg-white/10 px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#075f68]"
+                className="inline-flex rounded-full border border-white/30 bg-white/10 px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#3B2940]"
               >
                 Watch Patient Videos
-              </Link>
+              </Link> */}
 
             </div>
 

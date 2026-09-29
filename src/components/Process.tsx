@@ -12,7 +12,7 @@ export function ProcessView({ content }: { content: HomeProcessContent | null })
   if (!content) return <section className="py-14" style={{ minHeight: 420 }} />;
 
   return (
-    <section className="py-14">
+    <section className="py-10">
       <div className="mx-auto max-w-7xl px-6 animate-fade-in">
 
         {/* =========================================

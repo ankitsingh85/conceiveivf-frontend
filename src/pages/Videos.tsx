@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const videos = [
   {
@@ -66,14 +65,7 @@ const videos = [
       "Understand when professional fertility guidance and evaluation may be helpful.",
     youtubeId: "VIDEO_ID_8",
   },
-  {
-    id: 9,
-    category: "Patient Journey",
-    title: "Your Journey to Parenthood",
-    description:
-      "A patient-focused introduction to fertility care and the treatment journey at Conceive IVF.",
-    youtubeId: "VIDEO_ID_9",
-  },
+  
 ];
 
 const categories = [
@@ -97,10 +89,10 @@ export default function Videos() {
       : videos.filter((video) => video.category === activeCategory);
 
   return (
-    <main className="bg-white text-[#183f45]">
+    <main className="bg-white text-[#3B2940]">
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#075f68]">
+      <section className="relative overflow-hidden bg-[#3B2940]">
 
         <div className="absolute inset-0">
 
@@ -110,11 +102,11 @@ export default function Videos() {
             className="h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-[#075f68]/90" />
+          <div className="absolute inset-0 bg-[#3B2940]/90" />
 
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
 
           <div className="max-w-3xl">
 
@@ -133,16 +125,19 @@ export default function Videos() {
 
             <div className="mt-8 flex flex-wrap gap-4">
 
-              <Link
-                to="/contact"
-                className="rounded-full bg-[#dc3f73] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="rounded-full bg-[#C6A15B] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Book Appointment
-              </Link>
+              </button>
 
               <a
                 href="#video-library"
-                className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#075f68]"
+                className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#3B2940]"
               >
                 Explore Videos
               </a>
@@ -155,7 +150,7 @@ export default function Videos() {
       </section>
 
       {/* INTRO */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
@@ -171,15 +166,15 @@ export default function Videos() {
 
           <div>
 
-            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Learn About Fertility
             </p>
 
-            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Information that helps you understand your journey
             </h2>
 
-            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
 
               <p>
                 Fertility treatment involves several stages, and understanding
@@ -202,37 +197,37 @@ export default function Videos() {
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
 
-              <div className="rounded-2xl bg-[#fff0f4] p-5">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
 
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#dc3f73]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   IVF
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Treatment information
                 </p>
 
               </div>
 
-              <div className="rounded-2xl bg-[#f0fafb] p-5">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
 
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#08727c]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   ICSI
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Fertilisation guidance
                 </p>
 
               </div>
 
-              <div className="col-span-2 rounded-2xl bg-[#f7f7f7] p-5 sm:col-span-1">
+              <div className="col-span-2 rounded-2xl bg-[#F8F4EE] p-5 sm:col-span-1">
 
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#183f45]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#3B2940]">
                   More
                 </div>
 
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Fertility education
                 </p>
 
@@ -248,22 +243,22 @@ export default function Videos() {
       {/* VIDEO LIBRARY */}
       <section
         id="video-library"
-        className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+        className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10"
       >
 
         <div className="mx-auto max-w-7xl">
 
           <div className="mx-auto max-w-3xl text-center">
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Video Library
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[42px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[42px]">
               Explore our fertility videos
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               Select a topic to explore educational videos related to fertility
               treatments and reproductive care.
             </p>
@@ -281,8 +276,8 @@ export default function Videos() {
                 onClick={() => setActiveCategory(category)}
                 className={`whitespace-nowrap rounded-full px-5 py-2.5 font-['Manrope'] text-sm font-semibold transition ${
                   activeCategory === category
-                    ? "bg-[#075f68] text-white"
-                    : "border border-[#dce9e9] bg-white text-[#526568] hover:border-[#08727c] hover:text-[#08727c]"
+                    ? "bg-[#3B2940] text-white"
+                    : "border border-[#E8DFD2] bg-white text-[#5F5660] hover:border-[#C6A15B] hover:text-[#C6A15B]"
                 }`}
               >
                 {category}
@@ -293,13 +288,13 @@ export default function Videos() {
           </div>
 
           {/* VIDEO GRID */}
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 
             {filteredVideos.map((video) => (
 
               <article
                 key={video.id}
-                className="group overflow-hidden rounded-[26px] border border-[#e7eeee] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group overflow-hidden rounded-[26px] border border-[#E8DFD2] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
 
                 {/* VIDEO THUMBNAIL */}
@@ -319,13 +314,13 @@ export default function Videos() {
                     }}
                   />
 
-                  <div className="absolute inset-0 bg-[#075f68]/25 transition group-hover:bg-[#075f68]/40" />
+                  <div className="absolute inset-0 bg-[#3B2940]/25 transition group-hover:bg-[#3B2940]/40" />
 
-                  <span className="absolute left-5 top-5 rounded-full bg-white/95 px-3 py-1.5 font-['Manrope'] text-[10px] font-bold uppercase tracking-wider text-[#075f68]">
+                  <span className="absolute left-5 top-5 rounded-full bg-white/95 px-3 py-1.5 font-['Manrope'] text-[10px] font-bold uppercase tracking-wider text-[#3B2940]">
                     {video.category}
                   </span>
 
-                  <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#dc3f73] text-white shadow-xl transition duration-300 group-hover:scale-110">
+                  <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#C6A15B] text-white shadow-xl transition duration-300 group-hover:scale-110">
 
                     <svg
                       width="22"
@@ -344,18 +339,18 @@ export default function Videos() {
                 {/* CONTENT */}
                 <div className="p-6">
 
-                  <h3 className="font-['Manrope'] text-[18px] font-bold leading-7 text-[#183f45]">
+                  <h3 className="font-['Manrope'] text-[18px] font-bold leading-7 text-[#3B2940]">
                     {video.title}
                   </h3>
 
-                  <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                  <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                     {video.description}
                   </p>
 
                   <button
                     type="button"
                     onClick={() => setSelectedVideo(video)}
-                    className="mt-5 inline-flex items-center gap-2 font-['Manrope'] text-sm font-bold text-[#08727c] transition hover:text-[#dc3f73]"
+                    className="mt-5 inline-flex items-center gap-2 font-['Manrope'] text-sm font-bold text-[#C6A15B] transition hover:text-[#C6A15B]"
                   >
                     Watch Video
 
@@ -377,17 +372,17 @@ export default function Videos() {
       </section>
 
       {/* TREATMENT TOPICS */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      {/* <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="max-w-3xl">
 
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Treatment Topics
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Learn more about our fertility services
             </h2>
 
@@ -421,22 +416,22 @@ export default function Videos() {
               <Link
                 key={item.title}
                 to={item.link}
-                className="group rounded-[24px] border border-[#e7eeee] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group rounded-[24px] border border-[#E8DFD2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
 
-                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#dc3f73]/25">
+                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#C6A15B]/25">
                   0{index + 1}
                 </span>
 
-                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#183f45]">
+                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#3B2940]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {item.text}
                 </p>
 
-                <span className="mt-5 inline-block font-['Manrope'] text-sm font-bold text-[#08727c] group-hover:text-[#dc3f73]">
+                <span className="mt-5 inline-block font-['Manrope'] text-sm font-bold text-[#C6A15B] group-hover:text-[#C6A15B]">
                   Learn More →
                 </span>
 
@@ -447,16 +442,16 @@ export default function Videos() {
           </div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
 
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#075f68] px-6 py-14 text-center sm:px-12">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#3B2940] px-6 py-14 text-center sm:px-12">
 
           <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/5" />
 
-          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#dc3f73]/20" />
+          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#C6A15B]/20" />
 
           <div className="relative mx-auto max-w-3xl">
 
@@ -475,12 +470,15 @@ export default function Videos() {
 
             <div className="mt-8">
 
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full bg-[#dc3f73] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="inline-flex rounded-full bg-[#C6A15B] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Book Your Consultation
-              </Link>
+              </button>
 
             </div>
 
@@ -505,7 +503,7 @@ export default function Videos() {
             <button
               type="button"
               onClick={() => setSelectedVideo(null)}
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-[#183f45]"
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-[#3B2940]"
               aria-label="Close video"
             >
               ×

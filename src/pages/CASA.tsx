@@ -806,12 +806,15 @@ export default function CASA() {
             </p>
 
             <div className="casa-buttons">
-              <Link
-                to="/contact"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
                 className="casa-btn casa-btn-primary"
               >
                 Book Appointment →
-              </Link>
+              </button>
 
               <a
                 href="#what-is-casa"
@@ -1103,12 +1106,15 @@ export default function CASA() {
               semen analysis is appropriate for your fertility evaluation.
             </p>
 
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event("openAppointment"))
+              }
               className="casa-btn casa-btn-primary"
             >
               Book Your Appointment →
-            </Link>
+            </button>
           </div>
         </div>
       </section>

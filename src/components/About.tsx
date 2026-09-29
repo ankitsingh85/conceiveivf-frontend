@@ -69,7 +69,7 @@ export function AboutView({ content }: { content: HomeAboutContent | null }) {
 
       <section
         id="about"
-        className="py-14 about-font-body"
+        className="py-10 about-font-body"
         style={content ? undefined : { minHeight: 600 }}
       >
         {content && (

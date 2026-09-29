@@ -773,12 +773,15 @@ export default function InfertilityAssessmentFemale() {
             </p>
 
             <div className="female-hero-buttons">
-              <Link
-                to="/contact"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
                 className="female-btn female-btn-primary"
               >
                 Book Appointment →
-              </Link>
+              </button>
 
               <a
                 href="#assessment-process"
@@ -1077,12 +1080,15 @@ export default function InfertilityAssessmentFemale() {
               and understand which assessment options may be suitable for you.
             </p>
 
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event("openAppointment"))
+              }
               className="female-btn female-btn-primary"
             >
               Book Your Consultation →
-            </Link>
+            </button>
           </div>
         </div>
       </section>

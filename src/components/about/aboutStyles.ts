@@ -37,7 +37,7 @@ export const aboutStyles = `
           position: relative;
           z-index: 2;
           width: 100%;
-          padding: 90px 0;
+          padding: 80px 0;
         }
 
         .about-hero-label {
@@ -89,7 +89,7 @@ export const aboutStyles = `
         }
 
         .about-section {
-          padding: 45px 0;
+          padding: 40px 0;
         }
 
         .about-intro-grid {
@@ -447,7 +447,7 @@ export const aboutStyles = `
 
           .about-section,
           .care-section {
-            padding: 70px 0;
+            padding: 50px 0;
           }
 
           .about-hero {

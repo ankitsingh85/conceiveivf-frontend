@@ -846,9 +846,15 @@ export default function InfertilityAssessmentMale() {
             </p>
 
             <div className="male-hero-buttons">
-              <Link to="/contact" className="male-btn male-btn-primary">
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="male-btn male-btn-primary"
+              >
                 Book Appointment →
-              </Link>
+              </button>
 
               <a
                 href="#assessment"
@@ -1166,12 +1172,15 @@ export default function InfertilityAssessmentMale() {
               infertility assessment and personalised guidance.
             </p>
 
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event("openAppointment"))
+              }
               className="male-btn male-btn-primary"
             >
               Book Your Appointment →
-            </Link>
+            </button>
           </div>
         </div>
       </section>

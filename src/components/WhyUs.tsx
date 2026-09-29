@@ -16,7 +16,7 @@ export function WhyUsView({ content }: { content: HomeWhyUsContent | null }) {
         relative
         overflow-hidden
         bg-[#3B2940]
-        py-14
+        py-10
         text-white
       "
       style={content ? undefined : { minHeight: 560 }}

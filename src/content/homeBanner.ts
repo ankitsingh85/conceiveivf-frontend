@@ -45,7 +45,7 @@ export const homeBannerDefaults: HomeBannerContent = {
   stats: [
     { value: "15+", label: "YEARS OF CARE" },
     { value: "Free", label: "FIRST\nCONSULTATION" },
-    { value: "7 days", label: "10:00 – 18:00" },
+    { value: "Mon - Sun", label: "10:00 AM – 6:00 PM" },
   ],
   enquiry: {
     label: "GET IN TOUCH",

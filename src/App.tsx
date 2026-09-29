@@ -20,6 +20,8 @@ import PGDPGS from "./pages/PGDPGS";
 import Videos from "./pages/Videos";
 import PatientReview from "./pages/PatientReview";
 import FAQ from "./pages/FAQ";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 
@@ -172,6 +174,9 @@ function AppContent() {
             path="/faq"
             element={<FAQ />}
           />
+
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
 
           <Route
             path="/contact"

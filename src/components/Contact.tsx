@@ -24,12 +24,12 @@ export function ContactView({ content, preview = false }: { content: HomeContact
     form.submit({ ...form.values, treatment: form.values.treatment || content?.treatments[0] || "" });
   };
 
-  if (!content) return <section id="contact" className="py-14" style={{ minHeight: 640 }} />;
+  if (!content) return <section id="contact" className="py-10" style={{ minHeight: 640 }} />;
 
   const tel = content.phone.replace(/[^\d+]/g, "");
 
   return (
-    <section id="contact" className="py-14">
+    <section id="contact" className="py-10">
       <div className="mx-auto max-w-7xl px-6 animate-fade-in">
         <div className="overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#3B2940] to-[#2F2035] shadow-2xl shadow-[#3B2940]/20 lg:grid lg:grid-cols-5">
 

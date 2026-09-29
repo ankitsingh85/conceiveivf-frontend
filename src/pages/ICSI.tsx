@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 
 const steps = [
   {
@@ -105,19 +103,19 @@ const risks = [
 
 export default function ICSI() {
   return (
-    <main className="bg-white text-[#183f45]">
+    <main className="bg-white text-[#3B2940]">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#075f68]">
+      <section className="relative overflow-hidden bg-[#3B2940]">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1800&q=85"
             alt="ICSI fertility treatment"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#075f68]/88" />
+          <div className="absolute inset-0 bg-[#3B2940]/88" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-18">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
             <div className="max-w-3xl">
               <p className="mb-5 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-white/80">
@@ -135,16 +133,19 @@ export default function ICSI() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  to="/contact"
-                  className="rounded-full bg-[#dc3f73] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+                <button
+                  type="button"
+                  onClick={() =>
+                    window.dispatchEvent(new Event("openAppointment"))
+                  }
+                  className="rounded-full bg-[#C6A15B] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
                 >
                   Book Appointment
-                </Link>
+                </button>
 
                 <a
                   href="#icsi-process"
-                  className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#075f68]"
+                  className="rounded-full border border-white/40 px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-white hover:text-[#3B2940]"
                 >
                   Explore ICSI
                 </a>
@@ -165,7 +166,7 @@ export default function ICSI() {
       </section>
 
       {/* INTRO */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="overflow-hidden rounded-[30px]">
             <img
@@ -176,15 +177,15 @@ export default function ICSI() {
           </div>
 
           <div>
-            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="mb-4 font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Understanding ICSI
             </p>
 
-            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               A precise approach to fertilisation
             </h2>
 
-            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <div className="mt-6 space-y-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               <p>
                 Intracytoplasmic Sperm Injection, commonly known as ICSI, is an
                 advanced laboratory technique used as part of an IVF treatment
@@ -206,29 +207,29 @@ export default function ICSI() {
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl bg-[#fff0f4] p-5">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#dc3f73]">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   1
                 </div>
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Sperm selected
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-[#f0fafb] p-5">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#08727c]">
+              <div className="rounded-2xl bg-[#F8F4EE] p-5">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#C6A15B]">
                   1
                 </div>
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Mature egg
                 </p>
               </div>
 
               <div className="col-span-2 rounded-2xl bg-[#f7f7f7] p-5 sm:col-span-1">
-                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#183f45]">
+                <div className="font-['Playfair_Display'] text-2xl font-bold text-[#3B2940]">
                   Lab
                 </div>
-                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#687477]">
+                <p className="mt-1 font-['Manrope'] text-xs leading-5 text-[#5F5660]">
                   Controlled fertilisation
                 </p>
               </div>
@@ -238,19 +239,19 @@ export default function ICSI() {
       </section>
 
       {/* WHAT IS ICSI */}
-      <section className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+              <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
                 What Is ICSI?
               </p>
 
-              <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+              <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
                 When conventional fertilisation may be challenging
               </h2>
 
-              <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#687477]">
+              <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#5F5660]">
                 In conventional fertilisation, sperm must attach to and
                 penetrate the egg. According to the source page, ICSI provides
                 an alternative approach by allowing an embryologist to select
@@ -265,11 +266,11 @@ export default function ICSI() {
                   "Embryo culture after fertilisation",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#08727c] text-sm font-bold text-white">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#C6A15B] text-sm font-bold text-white">
                       ✓
                     </span>
 
-                    <span className="font-['Manrope'] text-sm font-semibold text-[#45575a]">
+                    <span className="font-['Manrope'] text-sm font-semibold text-[#5F5660]">
                       {item}
                     </span>
                   </div>
@@ -291,19 +292,19 @@ export default function ICSI() {
       {/* PROCESS */}
       <section
         id="icsi-process"
-        className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+        className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10"
       >
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               ICSI Treatment Process
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Eight carefully coordinated stages
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               From ovarian stimulation and egg retrieval to sperm injection,
               embryo culture and transfer, each stage is coordinated by the
               fertility and embryology team.
@@ -314,23 +315,23 @@ export default function ICSI() {
             {steps.map((step) => (
               <div
                 key={step.no}
-                className="group rounded-[24px] border border-[#e7eeee] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group rounded-[24px] border border-[#E8DFD2] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <span className="font-['Playfair_Display'] text-3xl font-bold text-[#dc3f73]/30">
+                  <span className="font-['Playfair_Display'] text-3xl font-bold text-[#C6A15B]/30">
                     {step.no}
                   </span>
 
-                  <span className="rounded-full bg-[#f0fafb] px-3 py-1 font-['Manrope'] text-[10px] font-bold uppercase tracking-wider text-[#08727c]">
+                  <span className="rounded-full bg-[#F8F4EE] px-3 py-1 font-['Manrope'] text-[10px] font-bold uppercase tracking-wider text-[#C6A15B]">
                     ICSI
                   </span>
                 </div>
 
-                <h3 className="mt-5 font-['Manrope'] text-[17px] font-bold text-[#183f45]">
+                <h3 className="mt-5 font-['Manrope'] text-[17px] font-bold text-[#3B2940]">
                   {step.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {step.text}
                 </p>
               </div>
@@ -340,7 +341,7 @@ export default function ICSI() {
       </section>
 
       {/* WHO MAY BENEFIT */}
-      <section className="bg-[#075f68] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[#3B2940] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[.85fr_1.15fr]">
           <div>
             <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-white/70">
@@ -359,12 +360,15 @@ export default function ICSI() {
             </p>
 
             <div className="mt-8">
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full bg-[#dc3f73] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="inline-flex rounded-full bg-[#C6A15B] px-7 py-3.5 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Consult Our Specialist
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -374,7 +378,7 @@ export default function ICSI() {
                 key={item}
                 className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#dc3f73] font-['Manrope'] text-xs font-bold text-white">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#C6A15B] font-['Manrope'] text-xs font-bold text-white">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
@@ -388,18 +392,18 @@ export default function ICSI() {
       </section>
 
       {/* ADVANTAGES */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Advantages Of ICSI
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               A targeted fertilisation technique
             </h2>
 
-            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               The source page highlights several potential advantages of using
               ICSI in appropriate treatment situations.
             </p>
@@ -409,17 +413,17 @@ export default function ICSI() {
             {advantages.map((item) => (
               <div
                 key={item.no}
-                className="rounded-[24px] bg-[#fff8fa] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="rounded-[24px] bg-[#F8F4EE] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
-                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#dc3f73]/25">
+                <span className="font-['Playfair_Display'] text-4xl font-bold text-[#C6A15B]/25">
                   {item.no}
                 </span>
 
-                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#183f45]">
+                <h3 className="mt-6 font-['Manrope'] text-lg font-bold text-[#3B2940]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-3 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   {item.text}
                 </p>
               </div>
@@ -429,7 +433,7 @@ export default function ICSI() {
       </section>
 
       {/* LAB SECTION */}
-      <section className="bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div className="overflow-hidden rounded-[30px]">
             <img
@@ -440,15 +444,15 @@ export default function ICSI() {
           </div>
 
           <div>
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               Embryology & Laboratory Care
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Precision continues after fertilisation
             </h2>
 
-            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               The ICSI procedure does not end with sperm injection. The
               resulting embryos are cultured in a controlled laboratory
               environment and their development is monitored before a suitable
@@ -457,38 +461,38 @@ export default function ICSI() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl bg-white p-5 shadow-sm">
-                <h3 className="font-['Manrope'] text-base font-bold text-[#183f45]">
+                <h3 className="font-['Manrope'] text-base font-bold text-[#3B2940]">
                   Embryo Culture
                 </h3>
-                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   Embryos are monitored during their early development.
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white p-5 shadow-sm">
-                <h3 className="font-['Manrope'] text-base font-bold text-[#183f45]">
+                <h3 className="font-['Manrope'] text-base font-bold text-[#3B2940]">
                   Embryo Selection
                 </h3>
-                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   A viable embryo can be selected for transfer based on the
                   treatment plan.
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white p-5 shadow-sm">
-                <h3 className="font-['Manrope'] text-base font-bold text-[#183f45]">
+                <h3 className="font-['Manrope'] text-base font-bold text-[#3B2940]">
                   Cryopreservation
                 </h3>
-                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   Suitable remaining embryos may be frozen for future use.
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white p-5 shadow-sm">
-                <h3 className="font-['Manrope'] text-base font-bold text-[#183f45]">
+                <h3 className="font-['Manrope'] text-base font-bold text-[#3B2940]">
                   Specialist Monitoring
                 </h3>
-                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                   The fertility and embryology team supports the process
                   throughout.
                 </p>
@@ -499,19 +503,19 @@ export default function ICSI() {
       </section>
 
       {/* RISKS */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
             <div>
-              <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#dc3f73]">
+              <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
                 Risks & Considerations
               </p>
 
-              <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+              <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
                 Understanding the treatment considerations
               </h2>
 
-              <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#687477]">
+              <p className="mt-5 font-['Manrope'] text-base leading-7 text-[#5F5660]">
                 The original Conceive IVF page identifies ovarian
                 hyperstimulation syndrome, multiple pregnancy, and emotional
                 and financial strain among the risks or considerations
@@ -529,19 +533,19 @@ export default function ICSI() {
               {risks.map((risk, index) => (
                 <div
                   key={risk.title}
-                  className="rounded-[22px] border border-[#e8eeee] bg-white p-6"
+                  className="rounded-[22px] border border-[#E8DFD2] bg-white p-6"
                 >
                   <div className="flex gap-5">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fff0f4] font-['Manrope'] text-sm font-bold text-[#dc3f73]">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F8F4EE] font-['Manrope'] text-sm font-bold text-[#C6A15B]">
                       0{index + 1}
                     </div>
 
                     <div>
-                      <h3 className="font-['Manrope'] text-[17px] font-bold text-[#183f45]">
+                      <h3 className="font-['Manrope'] text-[17px] font-bold text-[#3B2940]">
                         {risk.title}
                       </h3>
 
-                      <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#687477]">
+                      <p className="mt-2 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                         {risk.text}
                       </p>
                     </div>
@@ -554,25 +558,25 @@ export default function ICSI() {
       </section>
 
       {/* SUCCESS RATE */}
-      <section className="overflow-hidden bg-[#f8fbfb] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="overflow-hidden bg-[#F8F4EE] px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#08727c]">
+            <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-[#C6A15B]">
               ICSI Success Rate
             </p>
 
-            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#183f45] sm:text-[40px]">
+            <h2 className="mt-3 font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#3B2940] sm:text-[40px]">
               Outcomes vary from person to person
             </h2>
 
-            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#687477]">
+            <p className="mt-6 font-['Manrope'] text-base leading-7 text-[#5F5660]">
               The original page states that ICSI outcomes can vary depending
               on factors including the woman's age, the cause of infertility
               and the quality of the IVF clinic.
             </p>
 
-            <div className="mt-7 rounded-[24px] border border-[#dce9e9] bg-white p-6">
-              <p className="font-['Manrope'] text-sm leading-6 text-[#687477]">
+            <div className="mt-7 rounded-[24px] border border-[#E8DFD2] bg-white p-6">
+              <p className="font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                 The source page mentions success figures of up to 70% at an
                 advanced dedicated IVF clinic and around 30% per cycle for
                 women over 40. These are source-stated general figures, not a
@@ -580,7 +584,7 @@ export default function ICSI() {
               </p>
             </div>
 
-            <p className="mt-5 font-['Manrope'] text-sm leading-6 text-[#687477]">
+            <p className="mt-5 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
               A fertility specialist can assess your medical history,
               reproductive factors and treatment needs before discussing
               expected outcomes.
@@ -595,11 +599,11 @@ export default function ICSI() {
             />
 
             <div className="absolute inset-x-5 bottom-5 rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur">
-              <p className="font-['Playfair_Display'] text-xl font-bold text-[#183f45]">
+              <p className="font-['Playfair_Display'] text-xl font-bold text-[#3B2940]">
                 Your treatment is individual
               </p>
 
-              <p className="mt-1 font-['Manrope'] text-sm leading-6 text-[#687477]">
+              <p className="mt-1 font-['Manrope'] text-sm leading-6 text-[#5F5660]">
                 Discuss your fertility history and treatment options with a
                 qualified specialist.
               </p>
@@ -609,10 +613,10 @@ export default function ICSI() {
       </section>
 
       {/* CTA */}
-      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#075f68] px-6 py-14 text-center sm:px-12">
+      <section className="px-5 py-16 sm:px-8 lg:px-10 lg:py-10">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-[#3B2940] px-6 py-14 text-center sm:px-12">
           <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/5" />
-          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#dc3f73]/20" />
+          <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#C6A15B]/20" />
 
           <div className="relative mx-auto max-w-3xl">
             <p className="font-['Manrope'] text-sm font-semibold uppercase tracking-[0.1em] text-white/70">
@@ -629,12 +633,15 @@ export default function ICSI() {
             </p>
 
             <div className="mt-8">
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full bg-[#dc3f73] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#c93666]"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="inline-flex rounded-full bg-[#C6A15B] px-8 py-4 font-['Manrope'] text-sm font-bold text-white transition hover:bg-[#B08B48]"
               >
                 Book Your Consultation
-              </Link>
+              </button>
             </div>
           </div>
         </div>

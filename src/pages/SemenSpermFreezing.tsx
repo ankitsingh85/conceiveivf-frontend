@@ -237,7 +237,7 @@ export default function SemenSpermFreezing() {
         /* INTRO */
 
         .sperm-section {
-          padding: 45px 0;
+          padding: 40px 0;
         }
 
         .sperm-intro-grid {
@@ -760,7 +760,7 @@ export default function SemenSpermFreezing() {
 
           .sperm-section,
           .final-cta {
-            padding: 70px 0;
+            padding: 50px 0;
           }
 
           .sperm-hero {
@@ -843,7 +843,7 @@ export default function SemenSpermFreezing() {
           }
 
           .clinic-box {
-            padding: 30px 22px;
+            padding: 0px 22px;
             border-radius: 22px;
           }
 
@@ -877,9 +877,15 @@ export default function SemenSpermFreezing() {
             </p>
 
             <div className="sperm-hero-buttons">
-              <Link to="/contact" className="sperm-primary-btn">
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
+                className="sperm-primary-btn"
+              >
                 Book Appointment →
-              </Link>
+              </button>
 
               <a href="#sperm-freezing" className="sperm-secondary-btn">
                 Learn More ↓
@@ -1172,9 +1178,15 @@ export default function SemenSpermFreezing() {
               freezing is suitable for your individual circumstances.
             </p>
 
-            <Link to="/contact" className="sperm-primary-btn">
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event("openAppointment"))
+              }
+              className="sperm-primary-btn"
+            >
               Book Your Appointment →
-            </Link>
+            </button>
           </div>
         </div>
       </section>

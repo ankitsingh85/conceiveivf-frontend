@@ -19,7 +19,7 @@ export function VideoView({ content }: { content: HomeVideoContent | null }) {
         .video-section {
           width: 100%;
           background: #F8F4EE;
-          padding: 45px 20px 45px;
+          padding: 40px 20px 40px;
         }
 
         .video-container {

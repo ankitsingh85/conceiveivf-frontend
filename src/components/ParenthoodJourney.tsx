@@ -27,10 +27,10 @@ export function ParenthoodJourneyView({ content }: { content: HomeTreatmentsCont
 
         .parenthood-journey {
           width: 100%;
-          background: #ffffff;
+          background: #f8f4ee;
 
           /* REDUCED TOP + BOTTOM SPACE */
-          padding: 55px 20px 60px;
+          padding: 40px 20px 40px;
 
           margin: 0;
         }

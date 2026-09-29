@@ -220,7 +220,7 @@ export default function ReproductiveSurgery() {
 
         /* COMMON */
         .rp-section {
-          padding: 45px 0;
+          padding: 40px 0;
         }
 
         .rp-soft {
@@ -654,7 +654,7 @@ export default function ReproductiveSurgery() {
 
         /* CTA */
         .rp-cta {
-          padding: 90px 0;
+          padding: 40px 0;
           background: #FFFFFFaf7;
         }
 
@@ -869,12 +869,15 @@ export default function ReproductiveSurgery() {
             </p>
 
             <div className="rp-buttons">
-              <Link
-                to="/contact"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event("openAppointment"))
+                }
                 className="rp-btn rp-btn-primary"
               >
                 Book Appointment →
-              </Link>
+              </button>
 
               <a
                 href="#surgeries"
@@ -1272,12 +1275,15 @@ export default function ReproductiveSurgery() {
               fertility goals.
             </p>
 
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event("openAppointment"))
+              }
               className="rp-btn rp-btn-primary"
             >
               Book Your Consultation →
-            </Link>
+            </button>
           </div>
         </div>
       </section>
