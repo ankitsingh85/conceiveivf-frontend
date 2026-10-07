@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/conceiveivf-logo.webp";
+import logo from "../images/IVF-Logo.png";
 
 type MenuItem = {
   label: string;
@@ -103,21 +103,12 @@ const menuItems: MenuItem[] = [
         label: "FAQ",
         href: "/faq",
       },
-      // {
-      //   label: "Average Cost of Treatment",
-      //   href: "#",
-      // },
-      // {
-      //   label: "Menstrual Cycle Calculator",
-      //   href: "#",
-      // },
+      {
+        label: "Blog",
+        href: "/blog",
+      },
     ],
   },
-
-  // {
-  //   label: "Gallery",
-  //   href: "#",
-  // },
 
   {
     label: "Contact",
@@ -129,18 +120,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const [desktopDropdown, setDesktopDropdown] = useState<string | null>(
-    null
-  );
+  const [desktopDropdown, setDesktopDropdown] =
+    useState<string | null>(null);
 
-  const [mobileDropdown, setMobileDropdown] = useState<string | null>(
-    null
-  );
+  const [mobileDropdown, setMobileDropdown] =
+    useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
 
@@ -149,9 +140,27 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   const closeMobileMenu = () => {
     setOpen(false);
     setMobileDropdown(null);
+  };
+
+  const openAppointment = () => {
+    closeMobileMenu();
+
+    window.dispatchEvent(new Event("openAppointment"));
   };
 
   return (
@@ -168,35 +177,69 @@ export default function Navbar() {
           TOP BAR
       ===================================================== */}
 
-      <div className="bg-[#3B2940] text-xs text-white">
+      <div className="bg-[#3B2940] text-white">
         <div
           className="
             mx-auto
             flex
+            min-h-[34px]
             max-w-7xl
             items-center
             justify-between
-            px-5
+            gap-2
+            px-3
             sm:px-6
-            py-2
+            lg:px-8
           "
         >
-          <p className="whitespace-nowrap">
+          {/* LEFT - TIMING */}
+
+          <p
+            className="
+              whitespace-nowrap
+              text-[8px]
+              font-semibold
+              leading-none
+              sm:text-xs
+            "
+          >
             Mon – Sun: 10:00 AM – 6:00 PM
-            
           </p>
 
-          <div className="hidden md:flex items-center gap-6">
+          {/* RIGHT - CONTACT */}
+
+          <div className="flex shrink-0 items-center">
+            {/* PHONE - MOBILE + DESKTOP */}
+
             <a
               href="tel:+919255278000"
-              className="whitespace-nowrap transition hover:underline"
+              className="
+                whitespace-nowrap
+                text-[8px]
+                font-medium
+                leading-none
+                transition-colors
+                hover:text-[#C6A15B]
+                sm:text-xs
+              "
             >
               📞 +91 9255278000
             </a>
 
+            {/* EMAIL - DESKTOP ONLY */}
+
             <a
               href="mailto:conceiveivfsirsa@gmail.com"
-              className="whitespace-nowrap transition hover:underline"
+              className="
+                ml-5
+                hidden
+                whitespace-nowrap
+                text-xs
+                font-medium
+                transition-colors
+                hover:text-[#C6A15B]
+                md:inline-block
+              "
             >
               ✉ conceiveivfsirsa@gmail.com
             </a>
@@ -208,397 +251,414 @@ export default function Navbar() {
           MAIN NAVBAR
       ===================================================== */}
 
-      <nav
-        className="
-          mx-auto
-          flex
-          max-w-7xl
-          items-center
-          justify-between
-          bg-white
-          px-5
-          sm:px-6
-          py-3
-        "
-      >
-        {/* ===================================================
-            LOGO
-        =================================================== */}
-
-        <Link
-          to="/"
-          onClick={closeMobileMenu}
-          className="flex items-center shrink-0"
+      <nav className="bg-white">
+        <div
+          className="
+            mx-auto
+            flex
+            min-h-[68px]
+            max-w-7xl
+            items-center
+            justify-between
+            gap-4
+            px-4
+            sm:min-h-[76px]
+            sm:px-6
+            lg:min-h-[82px]
+            lg:px-8
+          "
         >
-          <img
-            src={logo}
-            alt="Conceive IVF Fertility Centre"
+          {/* =================================================
+              LOGO
+          ================================================= */}
+
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
             className="
-              h-14
-              sm:h-14
+              flex
+              h-[58px]
               w-auto
-              object-contain
+              max-w-[190px]
+              shrink-0
+              items-center
+              overflow-hidden
+              sm:h-[66px]
+              sm:max-w-[220px]
+              lg:h-[72px]
+              lg:max-w-[240px]
             "
-          />
-        </Link>
+          >
+            <img
+              src={logo}
+              alt="Conceive IVF Fertility Centre"
+              className="
+                block
+                h-[52px]
+                w-auto
+                max-w-[185px]
+                object-contain
+                object-left
+                sm:h-[60px]
+                sm:max-w-[215px]
+                lg:h-[68px]
+                lg:max-w-[235px]
+              "
+            />
+          </Link>
 
-        {/* ===================================================
-            DESKTOP MENU
-        =================================================== */}
+          {/* =================================================
+              DESKTOP MENU
+          ================================================= */}
 
-        <ul className="hidden lg:flex items-center gap-6">
-          {menuItems.map((item) => {
-            const hasChildren =
-              item.children && item.children.length > 0;
+          <ul
+            className="
+              hidden
+              lg:flex
+              lg:items-center
+              lg:gap-3
+              xl:gap-5
+              2xl:gap-6
+            "
+          >
+            {menuItems.map((item) => {
+              const hasChildren =
+                !!item.children && item.children.length > 0;
 
-            return (
-              <li
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => {
-                  if (hasChildren) {
-                    setDesktopDropdown(item.label);
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (hasChildren) {
-                    setDesktopDropdown(null);
-                  }
-                }}
-              >
-                {/* SIMPLE LINK */}
+              return (
+                <li
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => {
+                    if (hasChildren) {
+                      setDesktopDropdown(item.label);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (hasChildren) {
+                      setDesktopDropdown(null);
+                    }
+                  }}
+                >
+                  {/* SIMPLE DESKTOP LINK */}
 
-                {!hasChildren && item.href && (
-                  <Link
-                    to={item.href}
-                    className="
-                      flex
-                      items-center
-                      py-5
-                      text-sm
-                      font-semibold
-                      text-[#3B2940]
-                      whitespace-nowrap
-                      transition-colors
-                      hover:text-[#C6A15B]
-                    "
-                  >
-                    {item.label}
-                  </Link>
-                )}
-
-                {/* DROPDOWN MENU */}
-
-                {hasChildren && (
-                  <>
-                    <button
-                      type="button"
+                  {!hasChildren && item.href && (
+                    <Link
+                      to={item.href}
                       className="
                         flex
                         items-center
-                        gap-1.5
+                        whitespace-nowrap
                         py-5
-                        text-sm
+                        text-[13px]
                         font-semibold
                         text-[#3B2940]
-                        whitespace-nowrap
                         transition-colors
                         hover:text-[#C6A15B]
+                        xl:text-sm
                       "
                     >
                       {item.label}
+                    </Link>
+                  )}
 
-                      <svg
-                        width="15"
-                        height="15"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
+                  {/* DESKTOP DROPDOWN */}
+
+                  {hasChildren && (
+                    <>
+                      <button
+                        type="button"
+                        className="
+                          flex
+                          items-center
+                          gap-1
+                          whitespace-nowrap
+                          py-5
+                          text-[13px]
+                          font-semibold
+                          text-[#3B2940]
+                          transition-colors
+                          hover:text-[#C6A15B]
+                          xl:text-sm
+                        "
+                        aria-haspopup="true"
+                        aria-expanded={
+                          desktopDropdown === item.label
+                        }
+                      >
+                        <span>{item.label}</span>
+
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          className={`
+                            shrink-0
+                            transition-transform
+                            duration-200
+                            ${
+                              desktopDropdown === item.label
+                                ? "rotate-180"
+                                : ""
+                            }
+                          `}
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </button>
+
+                      {/* FIRST LEVEL DROPDOWN */}
+
+                      <div
                         className={`
-                          transition-transform
+                          absolute
+                          top-[calc(100%-2px)]
+                          left-1/2
+                          z-[10000]
+                          w-[320px]
+                          -translate-x-1/2
+                          rounded-2xl
+                          border
+                          border-[#E8DFD2]
+                          bg-white
+                          p-2
+                          shadow-[0_20px_60px_rgba(0,0,0,0.12)]
+                          transition-all
                           duration-200
                           ${
                             desktopDropdown === item.label
-                              ? "rotate-180"
-                              : ""
+                              ? "visible translate-y-0 opacity-100"
+                              : "invisible pointer-events-none -translate-y-2 opacity-0"
                           }
                         `}
                       >
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </button>
+                        {/* DROPDOWN ARROW */}
 
-                    {/* FIRST LEVEL DROPDOWN */}
+                        <div
+                          className="
+                            absolute
+                            -top-1.5
+                            left-1/2
+                            h-3
+                            w-3
+                            -translate-x-1/2
+                            rotate-45
+                            border-l
+                            border-t
+                            border-[#E8DFD2]
+                            bg-white
+                          "
+                        />
 
-                    <div
-                      className={`
-                        absolute
-                        top-full
-                        left-1/2
-                        -translate-x-1/2
-                        w-[320px]
-                        rounded-2xl
-                        border
-                        border-[#E8DFD2]
-                        bg-white
-                        p-2
-                        shadow-[0_20px_60px_rgba(0,0,0,0.12)]
-                        transition-all
-                        duration-200
-                        ${
-                          desktopDropdown === item.label
-                            ? "visible opacity-100 translate-y-0"
-                            : "invisible opacity-0 -translate-y-2 pointer-events-none"
-                        }
-                      `}
-                    >
-                      {/* DROPDOWN ARROW */}
+                        {item.children?.map((child) => {
+                          const childHasChildren =
+                            !!child.children &&
+                            child.children.length > 0;
 
-                      <div
-                        className="
-                          absolute
-                          left-1/2
-                          -top-1.5
-                          h-3
-                          w-3
-                          -translate-x-1/2
-                          rotate-45
-                          border-l
-                          border-t
-                          border-[#E8DFD2]
-                          bg-white
-                        "
-                      />
+                          return (
+                            <div
+                              key={child.label}
+                              className="group relative"
+                            >
+                              {childHasChildren ? (
+                                <>
+                                  {/* NESTED DROPDOWN ITEM */}
 
-                      {item.children?.map((child) => {
-                        const childHasChildren =
-                          child.children &&
-                          child.children.length > 0;
+                                  <div
+                                    className="
+                                      flex
+                                      cursor-pointer
+                                      items-center
+                                      justify-between
+                                      rounded-xl
+                                      px-4
+                                      py-3
+                                      text-sm
+                                      font-semibold
+                                      text-[#3B2940]
+                                      transition-all
+                                      hover:bg-[#F8F4EE]
+                                      hover:text-[#C6A15B]
+                                    "
+                                  >
+                                    <span className="pr-3">
+                                      {child.label}
+                                    </span>
 
-                        return (
-                          <div
-                            key={child.label}
-                            className="relative group"
-                          >
-                            {childHasChildren ? (
-                              <>
-                                {/* NESTED ITEM */}
+                                    <svg
+                                      width="15"
+                                      height="15"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth="2"
+                                      className="shrink-0"
+                                    >
+                                      <path d="m9 18 6-6-6-6" />
+                                    </svg>
+                                  </div>
 
-                                <div
+                                  {/* SECOND LEVEL DROPDOWN */}
+
+                                  <div
+                                    className="
+                                      absolute
+                                      left-full
+                                      top-0
+                                      ml-2
+                                      hidden
+                                      w-[290px]
+                                      rounded-2xl
+                                      border
+                                      border-[#E8DFD2]
+                                      bg-white
+                                      p-2
+                                      shadow-[0_20px_60px_rgba(0,0,0,0.12)]
+                                      group-hover:block
+                                    "
+                                  >
+                                    {child.children?.map(
+                                      (subChild) => (
+                                        <Link
+                                          key={subChild.label}
+                                          to={
+                                            subChild.href || "#"
+                                          }
+                                          className="
+                                            flex
+                                            items-center
+                                            rounded-xl
+                                            px-4
+                                            py-3
+                                            text-sm
+                                            font-medium
+                                            text-[#3B2940]
+                                            transition-all
+                                            hover:bg-[#F8F4EE]
+                                            hover:text-[#C6A15B]
+                                          "
+                                        >
+                                          {subChild.label}
+                                        </Link>
+                                      )
+                                    )}
+                                  </div>
+                                </>
+                              ) : (
+                                /* NORMAL DROPDOWN LINK */
+
+                                <Link
+                                  to={child.href || "#"}
                                   className="
                                     flex
                                     items-center
-                                    justify-between
                                     rounded-xl
                                     px-4
                                     py-3
                                     text-sm
-                                    font-semibold
+                                    font-medium
                                     text-[#3B2940]
                                     transition-all
                                     hover:bg-[#F8F4EE]
                                     hover:text-[#C6A15B]
-                                    cursor-pointer
                                   "
                                 >
-                                  <span>{child.label}</span>
+                                  {child.label}
+                                </Link>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
 
-                                  <svg
-                                    width="15"
-                                    height="15"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                  >
-                                    <path d="m9 18 6-6-6-6" />
-                                  </svg>
-                                </div>
+          {/* =================================================
+              DESKTOP APPOINTMENT
+          ================================================= */}
 
-                                {/* SECOND LEVEL DROPDOWN */}
-
-                                <div
-                                  className="
-                                    absolute
-                                    left-full
-                                    top-0
-                                    ml-2
-                                    hidden
-                                    w-[290px]
-                                    rounded-2xl
-                                    border
-                                    border-[#E8DFD2]
-                                    bg-white
-                                    p-2
-                                    shadow-[0_20px_60px_rgba(0,0,0,0.12)]
-                                    group-hover:block
-                                  "
-                                >
-                                  {child.children?.map(
-                                    (subChild) => (
-                                      <Link
-                                        key={subChild.label}
-                                        to={
-                                          subChild.href || "#"
-                                        }
-                                        className="
-                                          flex
-                                          items-center
-                                          justify-between
-                                          rounded-xl
-                                          px-4
-                                          py-3
-                                          text-sm
-                                          font-medium
-                                          text-[#3B2940]
-                                          transition-all
-                                          hover:bg-[#F8F4EE]
-                                          hover:text-[#C6A15B]
-                                        "
-                                      >
-                                        <span>
-                                          {subChild.label}
-                                        </span>
-
-                                        <svg
-                                          width="14"
-                                          height="14"
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          stroke="currentColor"
-                                          strokeWidth="1.8"
-                                        >
-                                          <path d="m9 18 6-6-6-6" />
-                                        </svg>
-                                      </Link>
-                                    )
-                                  )}
-                                </div>
-                              </>
-                            ) : (
-                              /* NORMAL DROPDOWN ITEM */
-
-                              <Link
-                                to={child.href || "#"}
-                                className="
-                                  flex
-                                  items-center
-                                  justify-between
-                                  rounded-xl
-                                  px-4
-                                  py-3
-                                  text-sm
-                                  font-medium
-                                  text-[#3B2940]
-                                  transition-all
-                                  hover:bg-[#F8F4EE]
-                                  hover:text-[#C6A15B]
-                                "
-                              >
-                                <span>{child.label}</span>
-
-                                <svg
-                                  width="14"
-                                  height="14"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="1.8"
-                                >
-                                  <path d="m9 18 6-6-6-6" />
-                                </svg>
-                              </Link>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* ===================================================
-            APPOINTMENT BUTTON
-        =================================================== */}
-
-        <button
-          type="button"
-          onClick={() =>
-            window.dispatchEvent(new Event("openAppointment"))
-          }
-          className="
-            hidden
-            xl:inline-flex
-            items-center
-            justify-center
-            rounded-full
-            bg-[#C6A15B]
-            px-6
-            py-3
-            text-sm
-            font-semibold
-            text-white
-            shadow-lg
-            shadow-[#C6A15B]/20
-            transition-all
-            hover:bg-[#B08B48]
-            hover:-translate-y-0.5
-            whitespace-nowrap
-          "
-        >
-          Book Appointment
-        </button>
-
-        {/* ===================================================
-            MOBILE MENU BUTTON
-        =================================================== */}
-
-        <button
-          type="button"
-          onClick={() => {
-            setOpen(!open);
-            setMobileDropdown(null);
-          }}
-          className="
-            flex
-            h-11
-            w-11
-            items-center
-            justify-center
-            rounded-xl
-            bg-[#F8F4EE]
-            border
-            border-[#E8DFD2]
-            lg:hidden
-          "
-          aria-label="Toggle Menu"
-          aria-expanded={open}
-        >
-          <svg
-            className="h-6 w-6 text-[#3B2940]"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            viewBox="0 0 24 24"
+          <button
+            type="button"
+            onClick={openAppointment}
+            className="
+              hidden
+              shrink-0
+              items-center
+              justify-center
+              rounded-full
+              bg-[#C6A15B]
+              px-5
+              py-3
+              text-sm
+              font-semibold
+              text-white
+              shadow-lg
+              shadow-[#C6A15B]/20
+              transition-all
+              hover:-translate-y-0.5
+              hover:bg-[#B08B48]
+              xl:inline-flex
+              2xl:px-6
+            "
           >
-            {open ? (
-              <>
-                <path d="M6 18L18 6" />
-                <path d="M6 6l12 12" />
-              </>
-            ) : (
-              <>
-                <path d="M4 6h16" />
-                <path d="M4 12h16" />
-                <path d="M4 18h16" />
-              </>
-            )}
-          </svg>
-        </button>
+            Book Appointment
+          </button>
+
+          {/* =================================================
+              MOBILE MENU BUTTON
+          ================================================= */}
+
+          <button
+            type="button"
+            onClick={() => {
+              setOpen((prev) => !prev);
+              setMobileDropdown(null);
+            }}
+            className="
+              flex
+              h-11
+              w-11
+              shrink-0
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-[#E8DFD2]
+              bg-[#F8F4EE]
+              lg:hidden
+            "
+            aria-label="Toggle Menu"
+            aria-expanded={open}
+          >
+            <svg
+              className="h-6 w-6 text-[#3B2940]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              {open ? (
+                <>
+                  <path d="M6 18L18 6" />
+                  <path d="M6 6l12 12" />
+                </>
+              ) : (
+                <>
+                  <path d="M4 6h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 18h16" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* =====================================================
@@ -608,20 +668,27 @@ export default function Navbar() {
       {open && (
         <div
           className="
-            lg:hidden
+            fixed
+            inset-x-0
+            top-[102px]
+            z-[9998]
+            h-[calc(100dvh-102px)]
+            overflow-y-auto
             border-t
             border-[#E8DFD2]
             bg-white
-            max-h-[calc(100vh-90px)]
-            overflow-y-auto
+            lg:hidden
           "
         >
-          <div className="px-5 pb-6 pt-2">
+          <div className="mx-auto max-w-7xl px-4 pb-8 pt-2 sm:px-6">
             {menuItems.map((item) => {
               const hasChildren =
-                item.children && item.children.length > 0;
+                !!item.children && item.children.length > 0;
 
-              {/* NORMAL LINK */}
+              {/* =================================================
+                  NORMAL MOBILE LINK
+                  NO ARROW
+              ================================================= */}
 
               if (!hasChildren && item.href) {
                 return (
@@ -631,34 +698,28 @@ export default function Navbar() {
                     onClick={closeMobileMenu}
                     className="
                       flex
+                      min-h-[54px]
+                      w-full
                       items-center
-                      justify-between
                       border-b
                       border-[#E8DFD2]
                       py-4
                       text-base
                       font-semibold
                       text-[#3B2940]
+                      transition-colors
                       hover:text-[#C6A15B]
                     "
                   >
                     {item.label}
-
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                    >
-                      <path d="m9 18 6-6-6-6" />
-                    </svg>
                   </Link>
                 );
               }
 
-              {/* MOBILE DROPDOWN */}
+              {/* =================================================
+                  MOBILE DROPDOWN
+                  ONLY DROPDOWN HAS ARROW
+              ================================================= */}
 
               return (
                 <div
@@ -676,6 +737,7 @@ export default function Navbar() {
                     }
                     className="
                       flex
+                      min-h-[54px]
                       w-full
                       items-center
                       justify-between
@@ -685,23 +747,29 @@ export default function Navbar() {
                       font-semibold
                       text-[#3B2940]
                     "
+                    aria-expanded={
+                      mobileDropdown === item.label
+                    }
                   >
                     <span>{item.label}</span>
 
+                    {/* ONLY DROPDOWN ARROW */}
+
                     <svg
-                      width="18"
-                      height="18"
+                      width="17"
+                      height="17"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
                       className={`
+                        shrink-0
                         transition-transform
                         duration-200
                         ${
                           mobileDropdown === item.label
                             ? "rotate-180 text-[#C6A15B]"
-                            : ""
+                            : "text-[#3B2940]"
                         }
                       `}
                     >
@@ -709,13 +777,28 @@ export default function Navbar() {
                     </svg>
                   </button>
 
+                  {/* DROPDOWN CONTENT */}
+
                   {mobileDropdown === item.label && (
                     <div className="pb-3">
-                      <div className="ml-2 rounded-2xl bg-[#F8F4EE] p-2">
+                      <div
+                        className="
+                          ml-0
+                          overflow-hidden
+                          rounded-2xl
+                          bg-[#F8F4EE]
+                          p-2
+                          sm:ml-2
+                        "
+                      >
                         {item.children?.map((child) => {
                           const childHasChildren =
-                            child.children &&
+                            !!child.children &&
                             child.children.length > 0;
+
+                          {/* =================================
+                              CHILD IS ALSO DROPDOWN
+                          ================================= */}
 
                           if (childHasChildren) {
                             return (
@@ -727,6 +810,11 @@ export default function Navbar() {
                             );
                           }
 
+                          {/* =================================
+                              NORMAL CHILD LINK
+                              NO ARROW
+                          ================================= */}
+
                           return (
                             <Link
                               key={child.label}
@@ -734,30 +822,23 @@ export default function Navbar() {
                               onClick={closeMobileMenu}
                               className="
                                 flex
+                                min-h-[48px]
+                                w-full
                                 items-center
-                                justify-between
                                 rounded-xl
-                                px-4
+                                px-3
                                 py-3
                                 text-sm
                                 font-medium
+                                leading-5
                                 text-[#5F5660]
+                                transition-colors
                                 hover:bg-white
                                 hover:text-[#C6A15B]
+                                sm:px-4
                               "
                             >
-                              <span>{child.label}</span>
-
-                              <svg
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="1.8"
-                              >
-                                <path d="m9 18 6-6-6-6" />
-                              </svg>
+                              {child.label}
                             </Link>
                           );
                         })}
@@ -768,24 +849,23 @@ export default function Navbar() {
               );
             })}
 
-            {/* MOBILE APPOINTMENT */}
+            {/* =================================================
+                MOBILE APPOINTMENT
+            ================================================= */}
 
             <button
               type="button"
-              onClick={() => {
-                closeMobileMenu();
-                window.dispatchEvent(
-                  new Event("openAppointment")
-                );
-              }}
+              onClick={openAppointment}
               className="
                 mt-5
                 flex
+                min-h-[52px]
                 w-full
                 items-center
                 justify-center
                 rounded-full
                 bg-[#C6A15B]
+                px-5
                 py-3.5
                 text-base
                 font-semibold
@@ -796,27 +876,60 @@ export default function Navbar() {
                 hover:bg-[#B08B48]
               "
             >
-              Appointment
+              Book Appointment
             </button>
 
-            {/* MOBILE CONTACT */}
+            {/* =================================================
+                MOBILE CONTACT
+            ================================================= */}
 
-            <div className="mt-5 rounded-2xl bg-[#F8F4EE] p-4">
-              <p className="text-sm font-semibold uppercase tracking-wider text-[#C6A15B]">
+            <div
+              className="
+                mt-5
+                rounded-2xl
+                bg-[#F8F4EE]
+                p-4
+                sm:p-5
+              "
+            >
+              <p
+                className="
+                  text-xs
+                  font-semibold
+                  uppercase
+                  tracking-[0.15em]
+                  text-[#C6A15B]
+                "
+              >
                 Contact Us
               </p>
 
-              <div className="mt-3 space-y-2">
+              <div className="mt-3 space-y-3">
                 <a
                   href="tel:+919255278000"
-                  className="block text-sm text-[#5F5660]"
+                  className="
+                    block
+                    text-sm
+                    font-medium
+                    text-[#5F5660]
+                    transition-colors
+                    hover:text-[#3B2940]
+                  "
                 >
                   📞 +91 92552 78000
                 </a>
 
                 <a
                   href="mailto:conceiveivfsirsa@gmail.com"
-                  className="block break-all text-sm text-[#5F5660]"
+                  className="
+                    block
+                    break-all
+                    text-sm
+                    font-medium
+                    text-[#5F5660]
+                    transition-colors
+                    hover:text-[#3B2940]
+                  "
                 >
                   ✉ conceiveivfsirsa@gmail.com
                 </a>
@@ -829,9 +942,8 @@ export default function Navbar() {
   );
 }
 
-
 /* =========================================================
-   MOBILE NESTED MENU
+   MOBILE NESTED DROPDOWN
 ========================================================= */
 
 function MobileNestedMenu({
@@ -845,25 +957,35 @@ function MobileNestedMenu({
 
   return (
     <div>
+      {/* NESTED DROPDOWN HEADER */}
+
       <button
         type="button"
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen((prev) => !prev)}
         className="
           flex
+          min-h-[48px]
           w-full
           items-center
           justify-between
           rounded-xl
-          px-4
+          px-3
           py-3
+          text-left
           text-sm
           font-semibold
+          leading-5
           text-[#3B2940]
+          transition-colors
           hover:bg-white
           hover:text-[#C6A15B]
+          sm:px-4
         "
+        aria-expanded={open}
       >
         <span>{item.label}</span>
+
+        {/* ONLY BECAUSE THIS IS A DROPDOWN */}
 
         <svg
           width="16"
@@ -873,17 +995,34 @@ function MobileNestedMenu({
           stroke="currentColor"
           strokeWidth="2"
           className={`
+            shrink-0
             transition-transform
             duration-200
-            ${open ? "rotate-90" : ""}
+            ${
+              open
+                ? "rotate-180 text-[#C6A15B]"
+                : "text-[#3B2940]"
+            }
           `}
         >
-          <path d="m9 18 6-6-6-6" />
+          <path d="m6 9 6 6 6-6" />
         </svg>
       </button>
 
+      {/* NESTED NORMAL LINKS */}
+
       {open && (
-        <div className="ml-3 mb-2 rounded-xl bg-white p-1">
+        <div
+          className="
+            mb-2
+            ml-2
+            overflow-hidden
+            rounded-xl
+            bg-white
+            p-1
+            sm:ml-3
+          "
+        >
           {item.children?.map((child) => (
             <Link
               key={child.label}
@@ -891,29 +1030,22 @@ function MobileNestedMenu({
               onClick={closeMenu}
               className="
                 flex
+                min-h-[46px]
+                w-full
                 items-center
-                justify-between
                 rounded-lg
-                px-4
+                px-3
                 py-3
                 text-sm
                 font-medium
+                leading-5
                 text-[#5F5660]
+                transition-colors
                 hover:text-[#C6A15B]
+                sm:px-4
               "
             >
-              <span>{child.label}</span>
-
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
+              {child.label}
             </Link>
           ))}
         </div>
