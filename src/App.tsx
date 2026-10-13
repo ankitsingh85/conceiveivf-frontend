@@ -69,7 +69,7 @@ import AdminLayout from "./components/admin/AdminLayout";
 // SEO CONFIGURATION
 // =====================================================
 
-const SITE_URL = "https://conceiveivf.in";
+const SITE_URL = "https://conceive-ivf.com/";
 
 type SeoData = {
   title: string;
@@ -250,13 +250,13 @@ function AppContent() {
         />
 
         <meta
-          name="robots"
-          content={
-            isAdminRoute
-              ? "noindex, nofollow"
-              : "index, follow"
-          }
-        />
+  name="robots"
+  content={
+    isAdminRoute
+      ? "noindex, nofollow"
+      : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  }
+/>
 
         {!isAdminRoute && (
           <>
