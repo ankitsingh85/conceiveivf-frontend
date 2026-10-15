@@ -69,7 +69,7 @@ import AdminLayout from "./components/admin/AdminLayout";
 // SEO CONFIGURATION
 // =====================================================
 
-const SITE_URL = "https://conceive-ivf.com/";
+const SITE_URL = "https://conceive-ivf.com"; // no trailing slash — paths start with "/"
 
 type SeoData = {
   title: string;
@@ -215,7 +215,10 @@ function AppContent() {
             "Explore fertility services and information available from Conceive IVF.",
         });
 
-  const canonicalUrl = `${SITE_URL}${pathname}`;
+  // "/" stays as the homepage; other paths lose any trailing slash so
+  // "/about" and "/about/" share one canonical URL
+  const canonicalPath = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
   // Global appointment popup listener.
   useEffect(() => {
@@ -258,58 +261,27 @@ function AppContent() {
   }
 />
 
+        {/* Each tag must be a direct child of <Helmet>: with React 19 it
+            drops tags wrapped in a fragment (only the first one survived) */}
+        {!isAdminRoute && <link rel="canonical" href={canonicalUrl} />}
+
+        {!isAdminRoute && <meta property="og:title" content={currentSeo.title} />}
+
+        {!isAdminRoute && <meta property="og:description" content={currentSeo.description} />}
+
+        {!isAdminRoute && <meta property="og:url" content={canonicalUrl} />}
+
         {!isAdminRoute && (
-          <>
-            <link
-              rel="canonical"
-              href={canonicalUrl}
-            />
-
-            <meta
-              property="og:title"
-              content={currentSeo.title}
-            />
-
-            <meta
-              property="og:description"
-              content={currentSeo.description}
-            />
-
-            <meta
-              property="og:url"
-              content={canonicalUrl}
-            />
-
-            <meta
-              property="og:type"
-              content={
-                pathname.startsWith("/blog/")
-                  ? "article"
-                  : "website"
-              }
-            />
-
-            <meta
-              property="og:site_name"
-              content="Conceive IVF"
-            />
-
-            <meta
-              name="twitter:card"
-              content="summary"
-            />
-
-            <meta
-              name="twitter:title"
-              content={currentSeo.title}
-            />
-
-            <meta
-              name="twitter:description"
-              content={currentSeo.description}
-            />
-          </>
+          <meta property="og:type" content={pathname.startsWith("/blog/") ? "article" : "website"} />
         )}
+
+        {!isAdminRoute && <meta property="og:site_name" content="Conceive IVF" />}
+
+        {!isAdminRoute && <meta name="twitter:card" content="summary" />}
+
+        {!isAdminRoute && <meta name="twitter:title" content={currentSeo.title} />}
+
+        {!isAdminRoute && <meta name="twitter:description" content={currentSeo.description} />}
       </Helmet>
 
       {/* COMMON NAVBAR */}
