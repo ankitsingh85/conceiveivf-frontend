@@ -3,6 +3,6 @@
 User-agent: *
 Disallow:
 
-Sitemap: 
+Sitemap:https://conceive-ivf.com/sitemap.xml
 # ---------------------------
 # END YOAST BLOCK
